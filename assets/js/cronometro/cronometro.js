@@ -66,10 +66,6 @@ let second = 45;
 let millisecond = 0;
 let cron;
 
-//document.form_main.start.onclick = () => cronometroStart();
-//document.form_main.pause.onclick = () => cronometroPause();
-//document.form_main.reset.onclick = () => cronometroReset();
-
 function cronometroStart() {
 	cronometroPause();
 	$('#pause-btn').attr('onclick', 'cronometroPause();');
@@ -114,10 +110,10 @@ function cronometroTimer() {
 }
 
 function updateDisplay() {
-	document.getElementById('hour').innerText = returnData(hour);
+	//document.getElementById('hour').innerText = returnData(hour);
 	document.getElementById('minute').innerText = returnData(minute);
 	document.getElementById('second').innerText = returnData(second);
-	document.getElementById('millisecond').innerText = returnMilli(millisecond);
+	//document.getElementById('millisecond').innerText = returnMilli(millisecond);
 }
 
 function returnData(input) {

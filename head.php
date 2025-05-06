@@ -47,6 +47,7 @@
   height: auto; /* Mantém as proporções */
 }
 
+/*
 .clock-container {
   display: flex;
   align-items: center;
@@ -87,23 +88,46 @@
   background-color: #00ffcc;
   color: #000;
 }
-/*
+*/
+
+.clock-container {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* espaçamento entre relógio e botão */
+}
+
 .digital-clock {
   font-family: 'Courier New', monospace;
   font-size: 48px;
-  color: #000; 
-  background-color: transparent; 
+  color: #000; /* números em preto */
+  background-color: transparent;
   padding: 20px 40px;
   border-radius: 12px;
-  display: inline-block;
   letter-spacing: 4px;
-  box-shadow: none;
+  border-radius: 12px;
+  border: 2px solid #000;
 }
 
 .digital-clock span {
   display: inline-block;
   min-width: 40px;
   text-align: center;
+  font:bold;
 }
-*/
+
+#pause-btn {
+  font-size: 18px;
+  padding: 12px 24px;
+  border: 2px solid #000;
+  background-color: transparent;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+#pause-btn:hover {
+  background-color: #000;
+  color: #fff;
+}
 </style>

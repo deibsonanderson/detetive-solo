@@ -132,10 +132,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     
     $cronometro = '<div class="clock-container">
                       <div class="digital-clock">
-                        <span id="hour">00</span>:
+                        <!--span id="hour">00</span>:-->
                         <span id="minute">00</span>:
-                        <span id="second">00</span>:
-                        <span id="millisecond">000</span>
+                        <span id="second">00</span><!--:
+                        <span id="millisecond">000</span-->
                       </div>
                       <button id="pause-btn" onclick="cronometroPause();">Pausar</button>
                     </div>';
@@ -154,7 +154,9 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     	</h1>
 	</p>
 	<p><h1><?php echo 'Seu destino atual é: '.$jogador["destinoAtual"]["nome"].'</br>'; ?></h1></p>
+	
 	<?php echo $cronometro; ?>
+	<p><h5>Tempo restante para a próxima rodada!</h5></p>
 	<h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>
 	<h1><a href="./index.php?etapa=5">Cheguei no local!</a></h1>
 	<script type="text/javascript">
