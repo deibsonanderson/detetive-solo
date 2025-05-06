@@ -153,9 +153,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	<p><img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid"></p>
 	<p><h1><?php echo ($jogador["npc"])? ' É um NPC.' : 'É um Jogador Humano.'; ?></h1></p>
 	<p>
-    	<h1>Total de casas que pode movimentar é: 
-    		<span id="dados-numero" style="display: none;"><?php echo $totalDados; ?></span>
-    	</h1>
+    	<h1>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h1>
 	</p>
 	<p><h1><?php echo 'Seu destino atual é: '.$jogador["destinoAtual"]["nome"].'</br>'; ?></h1></p>
 	
