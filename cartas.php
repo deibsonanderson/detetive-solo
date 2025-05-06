@@ -1,4 +1,5 @@
 <?php
+session_start();
 $CARTAS_BASE = array(
     //ARMA
     "VENENO" => array("codigo" => 50, "nome" => "Veneno", "tipo" => "ARMA", "imagem" => "50.png"),

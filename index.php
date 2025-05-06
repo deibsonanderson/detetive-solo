@@ -1,14 +1,11 @@
-<?php 
-session_start();
-require_once 'cartas.php';
-require_once 'funcoes.php';
-?>
+<?php require_once 'funcoes.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
 <?php require_once 'head.php'; ?>
 </head>
 <body class="bg">
+<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;">
 	<div class="container">
 		<h4><a href="./index.php?etapa=0">Resetar</a></h4></br>
 <?php
@@ -132,20 +129,44 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     }
     
     $jogador = retornarJogadorDaRodadaAtual($_SESSION["jogadores"], $_SESSION["posicao_jogador"]);
+    
+    $cronometro = '<div class="clock-container">
+                      <div class="digital-clock">
+                        <span id="hour">00</span>:
+                        <span id="minute">00</span>:
+                        <span id="second">00</span>:
+                        <span id="millisecond">000</span>
+                      </div>
+                      <button id="pause-btn" onclick="cronometroPause();">Pausar</button>
+                    </div>';
+    //$cronometro = ($jogador["npc"]) ? $cronometro : '';
 
     // Os dados que o NPC vai jogar
     $totalDados = lancarDados($_SESSION["qtd_dados"]);
     
 ?>
-
-	<p><h1><?php echo $jogador["nome"].'.'; ?></h1></p>
+	<p><h1><?php echo $jogador["nome"].'.'; ?></h1></p>	
 	<p><img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid"></p>
 	<p><h1><?php echo ($jogador["npc"])? ' É um NPC.' : 'É um Jogador Humano.'; ?></h1></p>
-	<p><h1><?php echo 'Total de casas que pode movimentar é: '.$totalDados.'.'; ?></h1></p>
+	<p>
+    	<h1>Total de casas que pode movimentar é: 
+    		<span id="dados-numero" style="display: none;"><?php echo $totalDados; ?></span>
+    	</h1>
+	</p>
 	<p><h1><?php echo 'Seu destino atual é: '.$jogador["destinoAtual"]["nome"].'</br>'; ?></h1></p>
+	<?php echo $cronometro; ?>
 	<h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>
 	<h1><a href="./index.php?etapa=5">Cheguei no local!</a></h1>
-
+	<script type="text/javascript">
+		$(document).ready(function() {
+        	$('#jogar-dados').show();        	
+        	setTimeout(function() {
+              $('#jogar-dados').fadeOut('slow');
+              $('#dados-numero').fadeIn('slow');
+              cronometroStart();
+            }, 1500);
+		});  	
+	</script>
 <?php 
 } else if($_SESSION["etapa"] == "5"){ //Essa etapa so tem a função de listar as ações que serão escolhidas!!!! *****************************************
     

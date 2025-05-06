@@ -1,10 +1,13 @@
 <?php 
 
-if ($_GET["etapa"] == "0") {
-    unset($_SESSION);
-    session_destroy();
-} else {
-    $_SESSION["etapa"] = $_GET["etapa"];
+require_once 'cartas.php';
+function carregarEtapa($etapa){
+    if ($etapa == "0") {
+        session_destroy();
+        return null;
+    } else {
+        return $etapa;
+    }    
 }
 
 function debug($valor){
@@ -351,4 +354,5 @@ function montarHtmlFichaDebug(){
     return $html;
 }
 
+$_SESSION["etapa"] = carregarEtapa($_GET["etapa"]);
 ?>
