@@ -1,4 +1,8 @@
-<?php require_once 'funcoes.php'; ?>
+<?php 
+require_once 'funcoes.php'; 
+error_reporting (E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_WARNING);
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +11,7 @@
 <body class="bg">
 <img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;">
 	<div class="container">
-		<h4><a href="./index.php?etapa=0">Resetar</a></h4></br>
+		<h4><a href="./index.php?etapa=0" onclick="btnVibrate();" >Resetar</a></h4></br>
 <?php
 if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quantidade de jogadores ***************************************************
 ?>	
@@ -17,7 +21,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         <?php
         for ($i = 1; $i < 7; $i++) {
             $html  = '<div class="col-md-6">';
-            $html .=      '<a href="./index.php?etapa=1&numero='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid"></a>';
+            $html .=      '<a href="./index.php?etapa=1&numero='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
             $html .= '</div>';
             echo $html;
         }
@@ -37,7 +41,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         $suspeitos = listarCartaPeloTipo($CARTAS_BASE, 'SUSPEITO');
         foreach ($suspeitos as $s) {
             $html = '<div class="col-md-6">';
-            $html .= '<a href="./index.php?etapa=2&jogador='.$s["codigo"].'"><img width="400" src="./assets/imagens/suspeitos/' . $s["imagem"] . '" class="img-fluid"></a>';
+            $html .= '<a href="./index.php?etapa=2&jogador='.$s["codigo"].'"><img width="400" src="./assets/imagens/suspeitos/' . $s["imagem"] . '" class="img-fluid" onclick="btnVibrate();"></a>';
             $html .= '</div>';
             echo $html;
         }
@@ -86,7 +90,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         <?php
         for ($i = 1; $i <= 2; $i++) {
             $html  = '<div class="col-md-6">';
-            $html .=      '<a href="./index.php?etapa=3&qtd_dados='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid"></a>';
+            $html .=      '<a href="./index.php?etapa=3&qtd_dados='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
             $html .= '</div>';
             echo $html;
         }
@@ -103,7 +107,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
  
 ?>
 	
-		<h1>Jogador anote suas cartas - <a href="./index.php?etapa=4">Iniciar!!!</a></h1>
+		<h1>Jogador anote suas cartas - <a href="./index.php?etapa=4" onclick="btnVibrate();" >Iniciar!!!</a></h1>
 		<div class="row">
         <?php
         foreach ($jogadores as $jogador) {
@@ -137,7 +141,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
                         <span id="second">00</span><!--:
                         <span id="millisecond">000</span-->
                       </div>
-                      <button id="pause-btn" onclick="cronometroPause();">Pausar</button>
+                      <div onclick="btnVibrate();" ><button id="pause-btn" onclick="cronometroPause();">Pausar</button></div>
                     </div>';
     //$cronometro = ($jogador["npc"]) ? $cronometro : '';
 
@@ -157,8 +161,8 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	
 	<?php echo $cronometro; ?>
 	<p><h5>Tempo restante para a próxima rodada!</h5></p>
-	<h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>
-	<h1><a href="./index.php?etapa=5">Cheguei no local!</a></h1>
+	<h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>
+	<h1><a href="./index.php?etapa=5" onclick="btnVibrate();">Cheguei no local!</a></h1>
 	<script type="text/javascript">
 		$(document).ready(function() {
         	$('#jogar-dados').show();        	
@@ -175,8 +179,8 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     //o jogador é listado para ser exibido
     $jogador = retornarJogadorDaRodadaAtual($_SESSION["jogadores"], $_SESSION["posicao_jogador"]);
     
-    $btnPalpite = '<h1><a href="./index.php?etapa=6">Realizar um palpite!</a></h1>';
-    $btnAcusar = '<h1><a href="./index.php?etapa=6&acusar=true">Acusar!</a></h1>';
+    $btnPalpite = '<h1><a href="./index.php?etapa=6" onclick="btnVibrate();" >Realizar um palpite!</a></h1>';
+    $btnAcusar = '<h1><a href="./index.php?etapa=6&acusar=true" onclick="btnVibrate();" >Acusar!</a></h1>';
     
 ?>
 
@@ -194,7 +198,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             }
         }
 
-        echo ($total == 0) ? $btnAcusar : $btnPalpite.$btnAcusar;
+        echo ($total == 0) ? $btnAcusar : $btnPalpite;
     
     } else {
 
@@ -203,7 +207,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	
 	?>
 	<!-- h1><a href="./index.php?etapa=4">Ir para uma passagem secreta!</a></h1-->
-	<h1><a href="./index.php?etapa=4&voltar=true">Voltar!</a></h1>
+	<h1><a href="./index.php?etapa=4&voltar=true" onclick="btnVibrate();" >Voltar!</a></h1>
 
 <?php 
 } else if($_SESSION["etapa"] == "6"){ // Essa etapa tem a função de expor as cartas que o NPC fez os palpites ******************************************
@@ -235,9 +239,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         
         //TODO: Pensar em como vai funcionar o fluxo de acusação do NPC
         
-        if($_GET["acusar"]){        
-            header("Location: ./index.php?etapa=10&suspeito=".$suspeito["codigo"]."&arma=".$arma["codigo"]."&local=".$local["codigo"]);
-            die();
+        if($_GET["acusar"]){
+            $url = "./index.php?etapa=10&suspeito=".$suspeito["codigo"]."&arma=".$arma["codigo"]."&local=".$local["codigo"];
+            $html = '<script>window.location.href = "'.$url.'";</script>';
+            echo $html;
         }
         
         $_SESSION["palpite"] = array("suspeito" => $suspeito, "arma" => $arma, "local" => $local);
@@ -257,7 +262,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             <p><img width="200" src="./assets/imagens/suspeitos/<?php echo $suspeito["imagem"]; ?>" class="img-fluid"></p>	
             <p><img width="200" src="./assets/imagens/armas/<?php echo $arma["imagem"]; ?>" class="img-fluid"></p>	
             <p><img width="200" src="./assets/imagens/locais/<?php echo $local["imagem"]; ?>" class="img-fluid"></p>	
-        	<h1><a href="./index.php?etapa=7">Expor as Cartas!!!</a></h1>
+        	<h1><a href="./index.php?etapa=7" onclick="btnVibrate();">Expor as Cartas!!!</a></h1>
     	</div>
 		<?php
 	// FINAL NPC ---------------------------------------------------------------------   
@@ -292,8 +297,8 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     				</select>
     			</div>
     			<div class="form-group">
-        			<h1 style="float: left;"><a href="./index.php?etapa=4&voltar=true">Voltar!</a></h1>&nbsp;&nbsp;
-        			<button type="submit" class="btn btn-primary">Confirmar!</button>
+        			<h1 style="float: left;"><a href="./index.php?etapa=4&voltar=true" onclick="btnVibrate();">Voltar!</a></h1>&nbsp;&nbsp;
+        			<button type="submit" class="btn btn-primary" onclick="btnVibrate();">Confirmar!</button>
     			</div>
     		</form>
 		</div>
@@ -311,7 +316,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         
         ?>
     		<h1>Nenhuma carta foi localizada!!!!</h1>
-    		<h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>
+    		<h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>
 		<?php
         
     } else {
@@ -329,7 +334,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             ?>
         		<h1>A carta localizada do jogador, <?php echo $jogadorEncontrado["nome"]; ?> é:</h1>
         		<p><img width="400" src="./assets/imagens/<?php echo recuperarCaminhoImagem($encontradas[0]["tipo"], $encontradas[0]["imagem"]); ?>" class="img-fluid"></p>
-        		<h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>
+        		<h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>
     		<?php
 		
         } else {
@@ -337,10 +342,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             echo "<p><h1>Jogador Humano - " . $jogadorEncontrado["nome"] . ' selecione uma das cartas</h1></p>';
             $html = '<div class="col-md-12">';
             foreach ($encontradas as $encontrada) {
-                $html .= '<a href="./index.php?etapa=8&carta='.$encontrada["codigo"].'"><img width="400" src="./assets/imagens/' . recuperarCaminhoImagem($encontrada["tipo"], $encontrada["imagem"]) . '" class="img-fluid"></a>';
+                $html .= '<a href="./index.php?etapa=8&carta='.$encontrada["codigo"].'"><img width="400" src="./assets/imagens/' . recuperarCaminhoImagem($encontrada["tipo"], $encontrada["imagem"]) . '" class="img-fluid" onclick="btnVibrate();"></a>';
             }
             $html .= '</div>';
-            $html .= '<h1><a href="./index.php?etapa=4&voltar=true">Voltar!</a></h1>';
+            $html .= '<h1><a href="./index.php?etapa=4&voltar=true" onclick="btnVibrate();">Voltar!</a></h1>';
             echo $html;
         }
         
@@ -358,7 +363,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     ?>
     <p><img width="400" src="./assets/imagens/<?php echo recuperarCaminhoImagem($carta["tipo"], $carta["imagem"]); ?>" class="img-fluid"></p>
     <!-- div class="row"><div class="col-md-12"><?php echo exibirFichaPalpites($palpites); ?></div></div-->
-    <h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>
+    <h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>
     <?php
     
 } else if($_SESSION["etapa"] == "9"){ //Essa etapa é responsavel pela exibição dos palpites realizados pelo jogador humano
@@ -382,7 +387,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     <p><img width="200" src="./assets/imagens/suspeitos/<?php echo $suspeito["imagem"]; ?>" class="img-fluid"></p>	
     <p><img width="200" src="./assets/imagens/armas/<?php echo $arma["imagem"]; ?>" class="img-fluid"></p>	
     <p><img width="200" src="./assets/imagens/locais/<?php echo $local["imagem"]; ?>" class="img-fluid"></p>	
-    <h1><a href="./index.php?etapa=7">Expor as Cartas!!!</a></h1>
+    <h1><a href="./index.php?etapa=7" onclick="btnVibrate();">Expor as Cartas!!!</a></h1>
     <?php
 
 } else if($_SESSION["etapa"] == "10"){ //Essa etapa é responsavel pela desfecho da acusação se foi com sucesso ou falha ****************************
@@ -413,13 +418,13 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             if(count($_SESSION["jogadores"]) == 1){
             
                 echo '<h1 style="text-align: center;">Você é único investigador que sobrou, agora é a hora de provar que você é um DETETIVE de verdade!!!</h1>';
-                echo '<h1 style="text-align: center;"><a href="./index.php?etapa=6&acusar=true">Acusar!</a></h1>';
+                echo '<h1 style="text-align: center;"><a href="./index.php?etapa=6&acusar=true" onclick="btnVibrate();">Acusar!</a></h1>';
                 
             } else {
                
                 echo '<h1 style="text-align: center;">Infelizmente o NPC '.$jogador["nome"].', não conseguiu identificar o verdadeiro assassino, por conta disso ele acabou escapando!</h1>';
                 echo '<p style="text-align: center;"><img width="200" src="./assets/imagens/suspeitos/'.$jogador["imagem"].'" class="img-fluid"></p>';
-                echo '<h1><a href="./index.php?etapa=4">Proxima Rodada!</a></h1>';
+                echo '<h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>';
             
             }            
         }
@@ -437,10 +442,17 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             echo '<p style="text-align: center;"><img width="200" src="./assets/imagens/game_over.png" class="img-fluid"></p>';
             
         }
-        ?><h1><a href="./index.php?etapa=0">Reiniciar</a></h1></br><?php 
+        ?><h1><a href="./index.php?etapa=0" onclick="btnVibrate();">Reiniciar</a></h1></br><?php 
     }
 }
 //echo montarHtmlFichaDebug();
 ?>
 </body>
+<script type="text/javascript">
+
+	function btnVibrate(){
+		 navigator.vibrate(200);
+	}
+
+</script>
 </html>
