@@ -20,7 +20,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     	</br></br>
     	<div class="row">
         <?php
-        for ($i = 3; $i < 7; $i++) {
+        for ($i = 1; $i < 7; $i++) {
             $html  = '<div class="col-md-6">';
             $html .=      '<a href="./index.php?etapa=1&numero='.$i.'"><img width="400" src="./assets/imagens/numero-jogadores/' . $i . '.png" class="img-fluid botao-total-jogadores" onclick="btnVibrate();"></a>';
             $html .= '</div>';
@@ -106,28 +106,36 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     unset($_SESSION["numero_participante"]);
     unset($_SESSION["jogador"]);
     
-    $_SESSION["qtd_dados"] = $_GET["qtd_dados"];
-    $jogadores = $_SESSION["jogadores"];
- 
+    $_SESSION["qtd_dados"] = $_GET["qtd_dados"];   
+    $jogador = retornarJogadorHumano($_SESSION["jogadores"]);
+    $locais = carregarProximosDestinosDisponiveis($CARTAS_BASE, $jogador);
 ?>
-	
-		<h1>Jogador anote suas cartas - <a href="./index.php?etapa=4" onclick="btnVibrate();" >Iniciar!!!</a></h1>
-		</br></br>
-		<div class="row">
-        <?php
-        foreach ($jogadores as $jogador) {
-            if(!$jogador["npc"]){
-                foreach ($jogador["cartas"] as $carta){
-                    $html  = '<div class="col-md-6">';
-                    $html .=      '<img width="400" src="./assets/imagens/'. recuperarCaminhoImagem($carta["tipo"], $carta["imagem"]) . '" class="img-fluid">';
-                    $html .= '</div>';
-                    echo $html;
-                }
-                break;
-            }
-        }
-        ?>        
-  		</div>
+    <h1>Selecine um destino!</h1></br>
+    <div class="row">
+    	<form action="./index.php" method="get" class="col-md-6 tabela" >
+			<input type="hidden" name="etapa" value="11">
+			<div class="form-group">
+				<select name="local" id="local" class="form-control form-control-lg" style="font-size: xx-large;">
+					<?php echo montarComboBoxPorLista($locais); ?>
+				</select>
+			</div>
+			<div class="form-group">
+    			<button type="submit"  class="btn btn-primary" style="font-size: xx-large;" onclick="btnVibrate();">INICIAR!</button>
+			</div>
+		</form>
+	</div>
+
+	<h1>Jogador anote suas cartas!<!--a href="./index.php?etapa=4" onclick="btnVibrate();" >Iniciar!!!</a--></h1></br></br>
+	<div class="row">
+    <?php
+    foreach ($jogador["cartas"] as $carta){
+        $html  = '<div class="col-md-6">';
+        $html .=      '<img width="400" src="./assets/imagens/'. recuperarCaminhoImagem($carta["tipo"], $carta["imagem"]) . '" class="img-fluid">';
+        $html .= '</div>';
+        echo $html;
+    }
+    ?>        
+	</div>
 
 <?php 
 } else if($_SESSION["etapa"] == "4"){ //A funcção dessa etapa é navegar entre os jogadores e disponibiizar os botões para realizar alguma ação.*********
@@ -147,9 +155,9 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
                         <span id="millisecond">000</span-->
                       </div>
                       <div onclick="btnVibrate();" ><button id="pause-btn" onclick="cronometroPause();">Pausar</button></div>
-                    </div>';
-    //$cronometro = ($jogador["npc"]) ? $cronometro : '';
-
+                    </div>
+                    <p><h5>Tempo restante para a próxima rodada!</h5></p>';
+    
     // Os dados que o NPC vai jogar
     $totalDados = lancarDados($_SESSION["qtd_dados"]);
     
@@ -163,9 +171,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	<p><h1><?php echo 'Seu destino atual é: '.$jogador["destinoAtual"]["nome"].'</br>'; ?></h1></p>
 	
 	<?php echo $cronometro; ?>
-	<p><h5>Tempo restante para a próxima rodada!</h5></p>
+	
 	<h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>
 	<h1><a href="./index.php?etapa=5" onclick="btnVibrate();">Cheguei no local!</a></h1>
+	<h1><?php echo ($jogador["npc"])? '' : '<a href="./index.php?etapa=12" onclick="btnVibrate();">Atualizar Destino</a>'; ?></h1>
 	<?php 
 	if(!$jogador["npc"]){
     	echo '</br><h1>Revise a sua Ficha de Palpites!</h1></br>';
@@ -314,7 +323,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     			</div>
     			<div class="form-group">
         			<h1 style="float: left;"><a href="./index.php?etapa=4&voltar=true" onclick="btnVibrate();">Voltar!</a></h1>&nbsp;&nbsp;
-        			<button type="submit" class="btn btn-primary" onclick="btnVibrate();">Confirmar!</button>
+        			<button type="submit" class="btn btn-primary" style="font-size: xx-large;" onclick="btnVibrate();">Confirmar!</button>
     			</div>
     		</form>
 		</div>
@@ -460,6 +469,37 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         }
         ?><h1><a href="./index.php?etapa=0" onclick="btnVibrate();">Reiniciar</a></h1></br><?php 
     }
+
+} else if($_SESSION["etapa"] == "11"){
+
+    $_SESSION["jogadores"] = atualizarDestinoJogadorHumano($_SESSION["jogadores"], $_GET["local"] , $CARTAS_BASE);
+    $voltar = ($_GET["voltar"]) ? '&voltar=true' : '';
+    
+    echo '<script>window.location.href = "./index.php?etapa=4'.$voltar.'";</script>';
+    
+} else if($_SESSION["etapa"] == "12") {
+    
+    $jogador = retornarJogadorHumano($_SESSION["jogadores"]);
+    $locais = carregarProximosDestinosDisponiveis($CARTAS_BASE, $jogador);
+    
+?>
+    <h1>Selecine seu proximo destino!</h1></br>
+    <div class="row">
+    	<form action="./index.php" method="get" class="col-md-6 tabela" >
+			<input type="hidden" name="etapa" value="11">
+			<input type="hidden" name="voltar" value="true">
+			<div class="form-group">
+				<select name="local" id="local" class="form-control form-control-lg" style="font-size: xx-large;">
+					<?php echo montarComboBoxPorLista($locais); ?>
+				</select>
+			</div>
+			<div class="form-group">
+    			<h1 style="float: left;"><a href="./index.php?etapa=4&voltar=true" onclick="btnVibrate();">Voltar!</a></h1>&nbsp;&nbsp;
+    			<button type="submit"  class="btn btn-primary" style="font-size: xx-large;" onclick="btnVibrate();">Confirmar!</button>
+    		</div>
+		</form>
+	</div>
+<?php 
 }
 //echo montarHtmlFichaDebug();
 ?>

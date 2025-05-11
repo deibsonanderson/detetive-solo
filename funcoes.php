@@ -22,6 +22,17 @@ function proximaPosicaoJogador($posicao, $listaJogadores){
     return $posicao + 1;
 }
 
+function retornarJogadorHumano($jogadores){
+    $aux = null;
+    foreach ($jogadores as $jogador) {
+        if(!$jogador["npc"]){
+            $aux = $jogador;
+            break;
+        }
+    }
+    return $aux;
+}
+
 function retornarPosicaoJogador($posicao, $listaJogadores){
     if ($posicao <= 0) {
         return (count($listaJogadores) - 1);
@@ -72,7 +83,7 @@ function listarCartaPeloTipo($cartasBase, $tipo){
 function montarComboBoxPorLista($lista){
     $html = null;
     foreach ($lista as $aux) {
-        $html .= '<option value="'.$aux["codigo"].'">'.$aux["codigo"].' => '.$aux["nome"].'</option>';
+        $html .= '<option value="'.$aux["codigo"].'">'.$aux["nome"].'</option>';
     }
     return $html;
 }
@@ -196,6 +207,19 @@ function validarLocalInicial($inicio, $jogador, $proximoDestino, $cartasBase){
     
 }
 
+function carregarProximosDestinosDisponiveis($cartasBase, $jogador, $inicio){
+    $destinosDisponiveis = listarCartaPeloTipo($cartasBase, 'LOCAL');
+    $destinos = null;
+    foreach ($destinosDisponiveis as $proximo) {
+        if($jogador["destinoAtual"]["codigo"] != $proximo["codigo"] && 
+            validarLocalInicial($inicio, $jogador, $proximo, $cartasBase)){
+            $destinos[] = $proximo;
+        }
+    }
+        
+    return $destinos;
+}
+
 
 function carregarProximoDestino($cartasBase, $jogador, $inicio = false){
     //Obs. Esse metodo não leva em consideração a tabela de palpite pode ser incluindo num futuro
@@ -227,6 +251,18 @@ function montarDestinosIniciaisJogadores($cartasBase, $jogadores){
     $aux = null;
     foreach ($jogadores as $jogador) {
         $jogador["destinoAtual"] = carregarProximoDestino($cartasBase, $jogador, true);
+        $aux[] = $jogador;
+    }
+    return $aux;
+}
+
+function atualizarDestinoJogadorHumano($jogadores, $codigo, $cartasBase){
+    $aux = null;    
+    $locais = listarCartaPeloTipo($cartasBase, 'LOCAL');
+    foreach ($jogadores as $jogador) {
+        if(!$jogador["npc"]){
+            $jogador["destinoAtual"] = consultarCartaPeloCodigo($codigo, $locais);
+        }
         $aux[] = $jogador;
     }
     return $aux;
