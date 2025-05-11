@@ -62,7 +62,7 @@ function returnData(input) {
 
 let hour = 0;
 let minute = 0;
-let second = 45;
+let second = 30;
 let millisecond = 0;
 let cron;
 

@@ -223,18 +223,22 @@ function retornarJogadorDaRodadaAtual($jogadores, $posicao){
     return $jogadores[$posicao];
 }
 
-function montarFichasDePalpites($jogadores, $cartasBase, $criminoso)
+function localizarCriminosoFichaPalpite($criminoso, $carta) {
+    return ($criminoso["suspeito"]["codigo"] == $carta["codigo"] || 
+        $criminoso["arma"]["codigo"] == $carta["codigo"] || 
+        $criminoso["local"]["codigo"] == $carta["codigo"]);
+}
+
+function montarFichasDePalpites($jogadores, $cartasBase, $criminoso, $debug = false)
 {
     $palpites = null;
 
     foreach ($jogadores as $jogador) {
         foreach ($cartasBase as $carta) {
-
-            if ($criminoso["suspeito"]["codigo"] == $carta["codigo"] || 
-                $criminoso["arma"]["codigo"] == $carta["codigo"] || 
-                $criminoso["local"]["codigo"] == $carta["codigo"]) {
+           
+            if ($debug && localizarCriminosoFichaPalpite($criminoso, $carta)) {
                 $carta["marcado"] = 2;
-            } else {
+            } else {           
                 $carta["marcado"] = 0;
             }
 

@@ -17,9 +17,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 ?>	
     	
     	<h1>Escolha o total de jogadores!!!</h1>
+    	</br></br>
     	<div class="row">
         <?php
-        for ($i = 1; $i < 7; $i++) {
+        for ($i = 3; $i < 7; $i++) {
             $html  = '<div class="col-md-6">';
             $html .=      '<a href="./index.php?etapa=1&numero='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
             $html .= '</div>';
@@ -36,6 +37,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 ?>  
 		
 		<h1>Escolha o seu personagem!!!</h1>
+		</br></br>
 		<div class="row">
         <?php
         $suspeitos = listarCartaPeloTipo($CARTAS_BASE, 'SUSPEITO');
@@ -86,9 +88,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 ?>
 	
 		<h1>Selecione a quantidade de dados!!!</h1>
+		</br></br>
 		<div class="row">
         <?php
-        for ($i = 1; $i <= 2; $i++) {
+        for ($i = 1; $i <= 4; $i++) {
             $html  = '<div class="col-md-6">';
             $html .=      '<a href="./index.php?etapa=3&qtd_dados='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
             $html .= '</div>';
@@ -108,6 +111,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 ?>
 	
 		<h1>Jogador anote suas cartas - <a href="./index.php?etapa=4" onclick="btnVibrate();" >Iniciar!!!</a></h1>
+		</br></br>
 		<div class="row">
         <?php
         foreach ($jogadores as $jogador) {
@@ -161,6 +165,12 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	<p><h5>Tempo restante para a próxima rodada!</h5></p>
 	<h1><a href="./index.php?etapa=4" onclick="btnVibrate();">Proxima Rodada!</a></h1>
 	<h1><a href="./index.php?etapa=5" onclick="btnVibrate();">Cheguei no local!</a></h1>
+	<?php 
+	if(!$jogador["npc"]){
+    	echo '</br><h1>Revise a sua Ficha de Palpites!</h1></br>';
+    	echo exibirFichaPalpites($jogador["palpites"]);
+	}
+	?>
 	<script type="text/javascript">
 		$(document).ready(function() {
         	$('#jogar-dados').show();        	
@@ -206,6 +216,13 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	?>
 	<!-- h1><a href="./index.php?etapa=4">Ir para uma passagem secreta!</a></h1-->
 	<h1><a href="./index.php?etapa=4&voltar=true" onclick="btnVibrate();" >Voltar!</a></h1>
+	
+	<?php 
+	if(!$jogador["npc"]){
+    	echo '</br><h1>Revise a sua Ficha de Palpites!</h1></br>';
+    	echo exibirFichaPalpites($jogador["palpites"]);
+	}
+	?>
 
 <?php 
 } else if($_SESSION["etapa"] == "6"){ // Essa etapa tem a função de expor as cartas que o NPC fez os palpites ******************************************
@@ -300,8 +317,8 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     			</div>
     		</form>
 		</div>
-		<h1>Revise a sua Ficha de Palpites!</h1>		
 		<?php
+		echo '</br><h1>Revise a sua Ficha de Palpites!</h1></br>';
 		echo exibirFichaPalpites($jogador["palpites"]);
 	// FINAL JOGADOR HUMANO  --------------------------------------------------------  
     }
