@@ -66,11 +66,11 @@ let second = 30;
 let millisecond = 0;
 let cron;
 
-function cronometroStart() {
+function cronometroStart(link) {
 	cronometroPause();
 	$('#pause-btn').attr('onclick', 'cronometroPause();');
 	$('#pause-btn').html('Pausar ');
-	cron = setInterval(() => { cronometroTimer(); }, 10);
+	cron = setInterval(() => { cronometroTimer(link); }, 10);
 }
 
 function cronometroPause() {
@@ -87,7 +87,7 @@ function cronometroReset() {
 	updateDisplay();
 }
 
-function cronometroTimer() {
+function cronometroTimer(link) {
 	if ((millisecond -= 10) < 0) {
 		millisecond = 990;
 		if (--second < 0) {
@@ -101,7 +101,12 @@ function cronometroTimer() {
 					minute = 0;
 					second = 0;
 					millisecond = 0;
-					location.reload();
+					
+					if(link == undefined){
+						location.reload();
+					} else{
+						location = link;
+					}
 				}
 			}
 		}

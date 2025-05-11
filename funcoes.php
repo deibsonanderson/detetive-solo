@@ -186,16 +186,29 @@ function listarLocaisDisponiveisParaRodada($cartasBase, $jogador){
     return $disponiveis;
 }
 
-function carregarProximoDestino($cartasBase, $jogador){
+function validarLocalInicial($inicio, $jogador, $proximoDestino, $cartasBase){
+    if(!$inicio){
+        return true;
+    } else {
+        $localInicial = $cartasBase[$jogador["local"]];
+        return ($localInicial["codigo"] != $proximoDestino["codigo"]);
+    }
+    
+}
+
+
+function carregarProximoDestino($cartasBase, $jogador, $inicio = false){
     //Obs. Esse metodo não leva em consideração a tabela de palpite pode ser incluindo num futuro
     $destinosDisponiveis = listarLocaisDisponiveisParaRodada($cartasBase, $jogador);
     $retorno = null;
+    
     if($jogador["destinoAtual"] == null){
         return $destinosDisponiveis[array_rand($destinosDisponiveis)];
     } else {
-        foreach ($destinosDisponiveis as $destino) {
+        for ($i = 0; $i < count($destinosDisponiveis); $i++) {
             $proximo = $destinosDisponiveis[array_rand($destinosDisponiveis)];
-            if($jogador["destinoAtual"]["codigo"] != $proximo["codigo"]){
+            if($jogador["destinoAtual"]["codigo"] != $proximo["codigo"] && 
+                validarLocalInicial($inicio, $jogador, $proximo, $cartasBase)){
                 $retorno = $proximo;
                 break;
             }
@@ -213,7 +226,7 @@ function carregarProximoDestino($cartasBase, $jogador){
 function montarDestinosIniciaisJogadores($cartasBase, $jogadores){
     $aux = null;
     foreach ($jogadores as $jogador) {
-        $jogador["destinoAtual"] = carregarProximoDestino($cartasBase, $jogador);
+        $jogador["destinoAtual"] = carregarProximoDestino($cartasBase, $jogador, true);
         $aux[] = $jogador;
     }
     return $aux;

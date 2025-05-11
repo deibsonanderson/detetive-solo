@@ -90,8 +90,13 @@
 }
 */
 
+.botao-total-jogadores:hover {
+  background-color: WHITE;
+  border-radius: 70px; /* Cor de fundo quando o mouse estiver sobre o botão */
+}
+
 .clock-container {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 20px; /* espaçamento entre relógio e botão */
 }

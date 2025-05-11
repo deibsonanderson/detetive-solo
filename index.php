@@ -10,8 +10,8 @@ error_reporting (E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_WARNING);
 </head>
 <body class="bg">
 <img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;">
-	<div class="container">
-		<h4><a href="./index.php?etapa=0" onclick="btnVibrate();" >Resetar</a></h4></br>
+	<div class="container" style="text-align: center;">
+		<h4><a href="./index.php?etapa=0" onclick="btnVibrate();" >RESETAR</a></h4></br>
 <?php
 if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quantidade de jogadores ***************************************************
 ?>	
@@ -22,7 +22,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
         <?php
         for ($i = 3; $i < 7; $i++) {
             $html  = '<div class="col-md-6">';
-            $html .=      '<a href="./index.php?etapa=1&numero='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
+            $html .=      '<a href="./index.php?etapa=1&numero='.$i.'"><img width="400" src="./assets/imagens/numero-jogadores/' . $i . '.png" class="img-fluid botao-total-jogadores" onclick="btnVibrate();"></a>';
             $html .= '</div>';
             echo $html;
         }
@@ -89,16 +89,17 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	
 		<h1>Selecione a quantidade de dados!!!</h1>
 		</br></br>
-		<div class="row">
+		
         <?php
-        for ($i = 1; $i <= 4; $i++) {
-            $html  = '<div class="col-md-6">';
-            $html .=      '<a href="./index.php?etapa=3&qtd_dados='.$i.'"><img width="400" src="./assets/imagens/numeros/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
+        for ($i = 1; $i <= 3; $i++) {
+            $html  = '<div class="row">';
+            $html .= '  <div class="col-md-12" style="margin-bottom:30px;">';
+            $html .=      '<a href="./index.php?etapa=3&qtd_dados='.$i.'"><img width="400" src="./assets/imagens/dados/' . $i . '.png" class="img-fluid" onclick="btnVibrate();"></a>';
+            $html .= '  </div>';
             $html .= '</div>';
             echo $html;
         }
-        ?>    
-  		</div>
+        ?>      		
 	
 <?php 
 } else if($_SESSION["etapa"] == "3" ){  //Exibir cartas do jogador, definir a ordem dos participantes, ******************************************  
