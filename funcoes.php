@@ -1,6 +1,6 @@
 <?php 
-
 require_once 'cartas.php';
+
 function carregarEtapa($etapa){
     if ($etapa == "0") {
         session_destroy();
@@ -8,6 +8,45 @@ function carregarEtapa($etapa){
     } else {
         return $etapa;
     }    
+}
+
+function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $width = '150'){
+    if ($isImagem) {
+        $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid" alt="'.$texto.'" >';
+        return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$imagem.'</a></h1>';
+    } else {
+        return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$texto.'</a></h1>';
+    }
+}
+
+function montarLinkAtualizarDestino($class = 'col-md-12'){
+    return montarLink('./index.php?etapa=12', 'Atualizar Destino', $class, true, 'atualizar.png');
+}
+
+function montarLinkChegueiLocal($class = 'col-md-12'){
+    return montarLink('./index.php?etapa=5', 'Cheguei no local!', $class, true, 'destino.png');
+}
+
+function montarLinkRealizarPalpiteAcusacao($acusar = false, $class = 'col-md-12'){
+    $param = ($acusar) ? '&acusar=true' : '';
+    $texto = ($acusar) ? 'Acusar!' : 'Realizar um palpite!';
+    return montarLink('./index.php?etapa=6'.$param , $texto , $class);
+}
+
+function montarLinkProximaRodada($class = 'col-md-12'){
+    return montarLink('./index.php?etapa=4', 'Proxima Rodada!', $class, true, 'proximo.png');
+}
+
+function montarLinkVoltar($class = 'col-md-12'){
+    return montarLink('./index.php?etapa=4&voltar=true', 'Voltar!', $class);
+}
+
+function montarLinkExporCarta($class = 'col-md-12'){
+    return montarLink('./index.php?etapa=7', 'Expor as Cartas!', $class);
+}
+
+function exibirTexto($texto, $opcional = ''){
+    return '<h1 '.$opcional.' >'.$texto.'</h1>';
 }
 
 function debug($valor){
@@ -83,7 +122,11 @@ function listarCartaPeloTipo($cartasBase, $tipo){
 function montarComboBoxPorLista($lista){
     $html = null;
     foreach ($lista as $aux) {
-        $html .= '<option value="'.$aux["codigo"].'">'.$aux["nome"].'</option>';
+        
+        $img = './assets/imagens/'.recuperarCaminhoImagem($aux["tipo"], $aux["imagem"]);
+        
+        
+        $html .= '<option value="'.$aux["codigo"].'" data-image="'.$img.'" >'.$aux["nome"].'</option>';
     }
     return $html;
 }
@@ -306,7 +349,7 @@ function montarFichasDePalpites($jogadores, $cartasBase, $criminoso, $debug = fa
 }
 
 function exibirFichaPalpites($palpites){
-    $html =  '<table border="1" class="tabela">';
+    $html =  '<table border="1" class="tabela" id="ficha-palpite">';
     foreach ($palpites as $chave => $palpite) {
         $html .= '<thead>
                     <tr><th colspan="2" class="tipoFicha">'.$chave.'</th></tr>

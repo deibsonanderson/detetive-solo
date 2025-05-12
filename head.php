@@ -95,6 +95,11 @@
   border-radius: 70px; /* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
+.botao-dados:hover {
+  background-color: WHITE;
+  border-radius: 38px; /* Cor de fundo quando o mouse estiver sobre o botão */
+}
+
 .clock-container {
   display: inline-flex;
   align-items: center;
