@@ -11,8 +11,9 @@ error_reporting (E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_WARNING);
 <body class="bg">
 <img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;">
 	<div class="container" style="text-align: center;">
-		<h4><a href="./index.php?etapa=0" onclick="btnVibrate();" >RESETAR</a></h4></br>
 <?php
+echo montarLinkReset();
+
 if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quantidade de jogadores ***************************************************
 
         echo exibirTexto('Escolha o total de jogadores!');    
@@ -122,14 +123,17 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 				</select>
 			</div>
 			<div class="form-group">
-    			<!-- button type="submit"  class="btn btn-primary" style="font-size: xx-large;" onclick="btnVibrate();">INICIAR!</button-->
-    			<h1><a href="#" onclick="document.getElementById('myForm').submit(); return false;">Iniciar!</a></h1>
+    			<h1>
+        			<a href="#" onclick="document.getElementById('myForm').submit(); return false;">
+        				<img width="200" src="./assets/imagens/comecar.png" class="img-fluid botao-iniciar">
+        			</a>
+    			</h1>
 			</div>
 		</form>
 	</div>
 
 	<?php echo exibirTexto('Jogador anote suas cartas!');  ?>
-	<!--h1><a href="./index.php?etapa=4" onclick="btnVibrate();" >Iniciar!!!</a></h1--></br></br>
+	</br></br>
 	<div class="row">
     <?php
     foreach ($jogador["cartas"] as $carta){
@@ -181,12 +185,12 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 		<?php
 		  $html = '';
 		  if ($jogador["npc"]) {
+		      $html .= montarLinkProximaRodada('col-md-6');
+		      $html .= montarLinkChegueiLocal('col-md-6');		      
+		  } else {
 		      $html .= montarLinkProximaRodada('col-md-4');
 		      $html .= montarLinkChegueiLocal('col-md-4');
 		      $html .= montarLinkAtualizarDestino('col-md-4');
-		  } else {
-		      $html .= montarLinkProximaRodada('col-md-6');
-		      $html .= montarLinkChegueiLocal('col-md-6');
 		  }	
 		  echo $html;
 	?>
@@ -199,19 +203,6 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	}
 	?>
 	<script type="text/javascript">
-    	var order = true;
-    	function slideUpAndDown(trigger, element, order ){
-            $('#'+trigger).click(function(){
-              if(order === true){
-                 $('#'+element).slideDown("slow");
-              }else if(order === false){
-                 $('#'+element).slideUp("slow");
-              }
-              order = !order;
-            });
-        	return order;
-        }  	
-		
 		$(document).ready(function() {
         	$('#jogar-dados').show();
         	$('#ficha-palpite').hide();           	
@@ -223,9 +214,6 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             
             order = slideUpAndDown('texto-ficha', 'ficha-palpite', order );
 		}); 
-		
-		
-		 	
 	</script>
 <?php 
 } else if($_SESSION["etapa"] == "5"){ //Essa etapa so tem a função de listar as ações que serão escolhidas!!!! *****************************************
@@ -355,9 +343,10 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     				</select>
     			</div>
     			<div class="form-group">
-    				<!-- button type="submit" class="btn btn-primary" style="font-size: xx-large;" onclick="btnVibrate();">Confirmar!</button-->
-        			<h1><a href="#" onclick="document.getElementById('myForm').submit(); return false;">Confirmar!</a></h1>
-        			<?php echo montarLinkVoltar(); ?>
+    				<?php 
+    				    echo montarLinkFormulario('Confirmar!');
+        			    echo montarLinkVoltar(); 
+    			    ?>
         		</div>
     		</form>
 		</div>
@@ -442,8 +431,8 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     <p><img width="200" src="./assets/imagens/suspeitos/<?php echo $suspeito["imagem"]; ?>" class="img-fluid"></p>	
     <p><img width="200" src="./assets/imagens/armas/<?php echo $arma["imagem"]; ?>" class="img-fluid"></p>	
     <p><img width="200" src="./assets/imagens/locais/<?php echo $local["imagem"]; ?>" class="img-fluid"></p>	
-    <h1><a href="./index.php?etapa=7" onclick="btnVibrate();">Expor as Cartas!!!</a></h1>
     <?php
+    echo montarLinkExporCarta();
 
 } else if($_SESSION["etapa"] == "10"){ //Essa etapa é responsavel pela desfecho da acusação se foi com sucesso ou falha ****************************
     
@@ -525,8 +514,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 				</select>
 			</div>
 			<div class="form-group">
-    			<!-- button type="submit"  class="btn btn-primary" style="font-size: xx-large;" onclick="btnVibrate();">Confirmar!</button-->
-    			<h1><a href="#" onclick="document.getElementById('myForm').submit(); return false;">Confirmar!</a></h1>
+    			<?php echo montarLinkFormulario('Confirmar!'); ?>
     		</div>
 		</form>
 	</div>
@@ -535,7 +523,6 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	</div>
 <?php 
 }
-//echo montarHtmlFichaDebug();
 ?>
 </body>
 <script type="text/javascript">
@@ -543,12 +530,24 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	function btnVibrate(){
 		 navigator.vibrate(200);
 	}
-	/*
-    document.onkeydown = function(e) {
-      if (e.keyCode === 116) { // 116 is the key code for F5
-        return false; // Prevent default action (refresh)
-      }
-    };
-	*/
+	
+    var order = true;
+	function slideUpAndDown(trigger, element, order ){
+        $('#'+trigger).click(function(){
+          if(order === true){
+             $('#'+element).slideDown("slow");
+          }else if(order === false){
+             $('#'+element).slideUp("slow");
+          }
+          order = !order;
+        });
+    	return order;
+    }
+    
+	$(document).ready(function() {
+    	$('#ficha-palpite').hide();           	
+        order = slideUpAndDown('texto-ficha', 'ficha-palpite', order );
+	});   	
+
 </script>
 </html>

@@ -12,11 +12,26 @@ function carregarEtapa($etapa){
 
 function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $width = '150'){
     if ($isImagem) {
-        $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid" alt="'.$texto.'" >';
-        return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$imagem.'</a></h1>';
+        $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-geral" alt="'.$texto.'" >';
+        return '<div class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();" class="botao-total-jogadores">'.$imagem.'</a></br>'.$texto.'</div>';
     } else {
         return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$texto.'</a></h1>';
     }
+}
+
+function montarLinkFormulario($texto){
+    $imagem = '<img width="150" src="./assets/imagens/confirmar.png" class="img-fluid botao-geral" alt="'.$texto.'" >';
+    return '<div><a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">'.$imagem.'</a></br>'.$texto.'</div>';
+}
+
+function montarLinkReset(){
+    return '<div>
+                <a href="./index.php?etapa=0" onclick="btnVibrate();" >
+                    <img width="50" src="./assets/imagens/sair.png" class="img-fluid botao-reset" alt="Sair!">
+                </a>
+                </br>Sair!
+            </div>
+            </br>';
 }
 
 function montarLinkAtualizarDestino($class = 'col-md-12'){
@@ -30,7 +45,8 @@ function montarLinkChegueiLocal($class = 'col-md-12'){
 function montarLinkRealizarPalpiteAcusacao($acusar = false, $class = 'col-md-12'){
     $param = ($acusar) ? '&acusar=true' : '';
     $texto = ($acusar) ? 'Acusar!' : 'Realizar um palpite!';
-    return montarLink('./index.php?etapa=6'.$param , $texto , $class);
+    $imagem = ($acusar) ? 'acusar.png' : 'investigacao.png';
+    return montarLink('./index.php?etapa=6'.$param , $texto , $class, true, $imagem);
 }
 
 function montarLinkProximaRodada($class = 'col-md-12'){
@@ -38,11 +54,11 @@ function montarLinkProximaRodada($class = 'col-md-12'){
 }
 
 function montarLinkVoltar($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=4&voltar=true', 'Voltar!', $class);
+    return montarLink('./index.php?etapa=4&voltar=true', 'Voltar!', $class, true, 'voltar.png');
 }
 
 function montarLinkExporCarta($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=7', 'Expor as Cartas!', $class);
+    return montarLink('./index.php?etapa=7', 'Expor as Cartas!', $class, true, 'expor.png');
 }
 
 function exibirTexto($texto, $opcional = ''){

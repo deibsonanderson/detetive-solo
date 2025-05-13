@@ -95,9 +95,24 @@
   border-radius: 70px; /* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
+.botao-geral:hover {
+  background-color: WHITE;
+  border-radius: 30px; /* Cor de fundo quando o mouse estiver sobre o botão */
+}
+
+.botao-reset:hover {
+  background-color: WHITE;
+  border-radius: 7px;
+}
+
 .botao-dados:hover {
   background-color: WHITE;
   border-radius: 38px; /* Cor de fundo quando o mouse estiver sobre o botão */
+}
+
+.botao-iniciar:hover {
+  background-color: WHITE;
+  border-radius: 100px; /* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .clock-container {
@@ -137,7 +152,7 @@
 }
 
 #pause-btn:hover {
-  background-color: #000;
-  color: #fff;
+  background-color: #fff;
+  color: #000;
 }
 </style>
