@@ -19,9 +19,9 @@ function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $widt
     }
 }
 
-function montarLinkFormulario($texto){
-    $imagem = '<img width="150" src="./assets/imagens/confirmar.png" class="img-fluid botao-geral" alt="'.$texto.'" >';
-    return '<div><a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">'.$imagem.'</a></br>'.$texto.'</div>';
+function montarLinkFormulario($texto, $class = 'col-md-12'){
+    $imagem = '<img width="150" onclick="btnVibrate();" src="./assets/imagens/confirmar.png" class="img-fluid botao-geral" alt="'.$texto.'" >';
+    return '<div class="'.$class.'"><a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">'.$imagem.'</a></br>'.$texto.'</div>';
 }
 
 function montarLinkReset(){

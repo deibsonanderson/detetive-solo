@@ -125,7 +125,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 			<div class="form-group">
     			<h1>
         			<a href="#" onclick="document.getElementById('myForm').submit(); return false;">
-        				<img width="200" src="./assets/imagens/comecar.png" class="img-fluid botao-iniciar">
+        				<img width="200" src="./assets/imagens/comecar.png" onclick="btnVibrate();" class="img-fluid botao-iniciar">
         			</a>
     			</h1>
 			</div>
@@ -221,14 +221,12 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     //o jogador é listado para ser exibido
     $jogador = retornarJogadorDaRodadaAtual($_SESSION["jogadores"], $_SESSION["posicao_jogador"]);
     
-    $btnPalpite = montarLinkRealizarPalpiteAcusacao(false);
-    $btnAcusar = montarLinkRealizarPalpiteAcusacao(true);
-    
 ?>
 
     <p><h1><?php echo $jogador["nome"].'.'; ?></h1></p>
-    <p><img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid"></p>	
+    <p><img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid"></p>
 	<?php
+	echo '<div class="row">';
     if ($jogador["npc"]) {
 
         $total = 0;
@@ -240,21 +238,22 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
             }
         }
 
-        echo ($total == 0) ? $btnAcusar : $btnPalpite;
+        echo ($total == 0) ? montarLinkRealizarPalpiteAcusacao(true,'col-md-6') : montarLinkRealizarPalpiteAcusacao(false, 'col-md-6');
+        echo montarLinkVoltar('col-md-6');
     
     } else {
 
-        echo $btnPalpite . $btnAcusar;
+        echo montarLinkRealizarPalpiteAcusacao(false, 'col-md-4');
+        echo montarLinkRealizarPalpiteAcusacao(true, 'col-md-4');
+        echo montarLinkVoltar('col-md-4');
     }
-    
-    echo montarLinkVoltar();
-	
-	if(!$jogador["npc"]){
+    echo '</div>';
+    if(!$jogador["npc"]){
 	    echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha"').'</br>';
     	echo exibirFichaPalpites($jogador["palpites"]);
 	}
 	?>
-
+	
 <?php 
 } else if($_SESSION["etapa"] == "6"){ // Essa etapa tem a função de expor as cartas que o NPC fez os palpites ******************************************
     
@@ -343,10 +342,12 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     				</select>
     			</div>
     			<div class="form-group">
+    				<div class="row">
     				<?php 
-    				    echo montarLinkFormulario('Confirmar!');
-        			    echo montarLinkVoltar(); 
+    				    echo montarLinkFormulario('Confirmar!', 'col-md-6');
+    				    echo montarLinkVoltar('col-md-6'); 
     			    ?>
+        			</div>
         		</div>
     		</form>
 		</div>
@@ -513,13 +514,13 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 					<?php echo montarComboBoxPorLista($locais); ?>
 				</select>
 			</div>
-			<div class="form-group">
-    			<?php echo montarLinkFormulario('Confirmar!'); ?>
-    		</div>
+			<div class="row">
+			<?php 
+			    echo montarLinkFormulario('Confirmar!', 'col-md-6');
+			    echo montarLinkVoltar('col-md-6'); 
+		    ?>
+			</div>
 		</form>
-	</div>
-	<div class="row">
-		<?php echo montarLinkVoltar(); ?>
 	</div>
 <?php 
 }
