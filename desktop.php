@@ -9,11 +9,9 @@ error_reporting (E_ALL & ~E_NOTICE & ~E_DEPRECATED & ~E_WARNING);
 <?php require_once 'head.php'; ?>
 </head>
 <body class="bg">
-<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;">
-	<div class="container" style="text-align: center;">
+<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;z-index:1;">
+<div class="container" style="text-align: center;">
 <?php
-echo montarLinkReset();
-
 if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quantidade de jogadores ***************************************************
 
         echo exibirTexto('Escolha o total de jogadores!');    
@@ -159,32 +157,56 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     $totalDados = lancarDados($_SESSION["qtd_dados"]);
     
 ?>
-	<p><h1><?php echo $jogador["nome"].'.'; ?></h1></p>	
-	<p><img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid"></p>
-	<p><h1><img width="80" src="./assets/imagens/<?php echo ($jogador["npc"])? 'computador.png' : 'humano.png'; ?>" class="img-fluid"></h1></p>
-	<p><h1>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h1></p>
-	<p><?php echo exibirTexto('Seu destino atual é: '.$jogador["destinoAtual"]["nome"]).'</br>'; ?></p>
-	
-	<?php echo montarExibicaoConometro(); ?>
-	
-		<?php
-		  $html = '<div class="row ">';
-		  if ($jogador["npc"]) {
-		      $html .= montarLinkProximaRodada('col-md-6');
-		      $html .= montarLinkChegueiLocal('col-md-6');
-		      echo $html.'</div>';
-		  } else {
-		      $html .= montarLinkProximaRodada('col-md-4');
-		      $html .= montarLinkChegueiLocal('col-md-4');
-		      $html .= montarLinkAtualizarDestino('col-md-4');
-		      echo $html.'</div>';
-		      
-		      echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha"').'</br>';
-		      echo exibirFichaPalpites($jogador["palpites"]);
-		  }	
-		  
-	?>
-	
+
+	<div class="row justify-content-center" >
+    	<div class="col-md-2 justify-content-center" >
+    		<div class="row col-md-12 espacamentos">
+	    		<img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid border-geral">
+    		</div>   
+    		<div class="row col-md-12 espacamentos">
+	    		<img width="150" src="./assets/imagens/<?php echo ($jogador["npc"])? 'computador.png' : 'humano.png'; ?>" class="img-fluid border-geral">
+    		</div>   		
+		</div>
+		<div class="col-md-6" >
+    		<div class="row col-md-12 espacamentos border-geral">
+    			<h1><?php echo $jogador["nome"].'.'; ?></h1>    		
+    		</div>
+    		<div class="row espacamentos">
+  				<?php echo montarExibicaoConometro(); ?>
+    		</div>
+    		<div class="row col-md-12 espacamentos border-geral">
+  				<h1>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h1>
+    		</div>
+    		<div class="row col-md-12 espacamentos border-geral" style="padding-left:0px">
+				<div class="col-md-9" style="align-self: anchor-center; text-align: left;" >
+					<?php echo exibirTexto('Próximo destino:'); ?>
+				</div>
+				<div class="col-md-3" >
+					<img width="200" src="./assets/imagens/locais/<?php echo $jogador["destinoAtual"]["imagem"]; ?>" class="img-fluid espacamentos">    					
+				</div>
+    		</div>    		
+    		<div class="row col-md-12 justify-content-center espacamentos">
+    			<?php
+        		  $html = '<div class="row">';
+        		  if ($jogador["npc"]) {
+        		      $html .= montarLinkProximaRodada('col-md-6');
+        		      $html .= montarLinkChegueiLocal('col-md-6');
+        		  } else {
+        		      $html .= montarLinkProximaRodada('col-md-4');
+        		      $html .= montarLinkChegueiLocal('col-md-4');
+        		      $html .= montarLinkAtualizarDestino('col-md-4');
+        		  }
+        		  echo $html.'</div>';
+            	?>
+    		</div> 
+		</div>
+		<div class="col-md-4 " >
+    	<?php
+		  //echo exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha" style="cursor:pointer" ');
+		  echo exibirFichaPalpites($jogador["palpites"]);
+		?>  
+		</div>
+	</div>
 	<script type="text/javascript">
 		$(document).ready(function() {
         	$('#jogar-dados').show();
@@ -504,6 +526,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
 	</div>
 <?php 
 }
+echo montarLinkReset('class="espacamentos" style="float: right;" ');
 ?>
 </body>
 <script type="text/javascript">
@@ -526,7 +549,7 @@ if(!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0"){ //Selecionar a quan
     }
     
 	$(document).ready(function() {
-    	$('#ficha-palpite').hide();           	
+    	//$('#ficha-palpite').hide();           	
         order = slideUpAndDown('texto-ficha', 'ficha-palpite', order );
 	});   	
 

@@ -33,6 +33,11 @@
 	margin-right: auto;
 }
 
+.espacamentos {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .bg {
 	/*background-image: url(./assets/imagens/detetive.png);*/
 	background: rgba(76, 175, 80, 0.3);
@@ -47,48 +52,10 @@
   height: auto; /* Mantém as proporções */
 }
 
-/*
-.clock-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.border-geral{
+    border: 2px solid black;
+    border-radius: 12px;
 }
-
-.digital-clock {
-  font-family: 'Courier New', monospace;
-  font-size: 48px;
-  color: #00ffcc;
-  background-color: #000;
-  padding: 20px 40px;
-  border-radius: 12px;
-  display: inline-block;
-  box-shadow: 0 0 20px #00ffcc;
-  letter-spacing: 4px;
-}
-
-.digital-clock span {
-  display: inline-block;
-  min-width: 40px;
-  text-align: center;
-}
-
-#pause-btn {
-  font-size: 18px;
-  padding: 12px 24px;
-  border: 2px solid #00ffcc;
-  background-color: #000;
-  color: #00ffcc;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
-  box-shadow: 0 0 10px #00ffcc;
-}
-
-#pause-btn:hover {
-  background-color: #00ffcc;
-  color: #000;
-}
-*/
 
 .botao-total-jogadores:hover {
   background-color: WHITE;
@@ -128,7 +95,7 @@
   background-color: transparent;
   padding: 20px 40px;
   border-radius: 12px;
-  letter-spacing: 4px;
+  /*letter-spacing: 4px;*/
   border-radius: 12px;
   border: 2px solid #000;
 }

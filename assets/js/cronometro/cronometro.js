@@ -3,7 +3,7 @@
 let hour = 0;
 let minute = 0;
 let second = 30;
-let millisecond = 0;
+let millisecond = 999;
 let cron;
 
 function cronometroStart(link) {
@@ -57,6 +57,8 @@ function cronometroTimer(link) {
 function updateDisplay() {
 	document.getElementById('minute').innerText = returnData(minute);
 	document.getElementById('second').innerText = returnData(second);
+	var muli = returnData(millisecond);	
+	document.getElementById('millisecond').innerText = (muli < 100)?'0'+muli:muli;
 }
 
 function returnData(input) {

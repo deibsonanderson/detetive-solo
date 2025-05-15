@@ -24,14 +24,31 @@ function montarLinkFormulario($texto, $class = 'col-md-12'){
     return '<div class="'.$class.'"><a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">'.$imagem.'</a></br>'.$texto.'</div>';
 }
 
-function montarLinkReset(){
-    return '<div>
+function montarLinkReset($opcional = ''){
+    return '<div '.$opcional.'>
                 <a href="./index.php?etapa=0" onclick="btnVibrate();" >
                     <img width="50" src="./assets/imagens/sair.png" class="img-fluid botao-reset" alt="Sair!">
                 </a>
                 </br>Sair!
             </div>
             </br>';
+}
+
+function montarExibicaoConometro(){
+    return '<div class="clock-container">
+                      <div class="digital-clock">
+                        <!--span id="hour">00</span>:-->
+                        <span id="minute">00</span>:
+                        <span id="second">00</span>:
+                        <span id="millisecond">000</span>
+                      </div>
+                      <div onclick="btnVibrate();" >
+                        <button id="pause-btn" onclick="cronometroPause();">
+                            <img width="85" src="./assets/imagens/pausar.png" class="img-fluid">
+                        </button>
+                      </div>
+                    </div>
+                    <p><h5>Tempo restante para a próxima rodada!</h5></p>';
 }
 
 function montarLinkAtualizarDestino($class = 'col-md-12'){
