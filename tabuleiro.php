@@ -1,52 +1,47 @@
-<?php 
-
-
-
-?>
 <html>
 <head>
-	<link rel="stylesheet" href="estilo.css" type="text/css"/>
-	<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="montarTabuleiro.js"></script>
-	<style>	
-    	#tabuleiro{
-        	width:1300px;
-        	height:1300px;
-        	border:solid 1px;
-        }
-        
-        .linha{
-        	height:50px;
-        }
-        
-        .casa{
-        	width:50px;
-        	height:100%;
-        	float:left;
-        	cursor: pointer;
-        	border: 1px solid black;
-        }
-        
-        .casa_branca{
-        	background-color: #fff;
-        }
-        
-        .casa_preta{
-        	background-color: #000;
-        }
-        
-        .casa_selecionada{
-        	background-color: #FF0000;
-        }	
-	</style>
+<link rel="stylesheet" href="estilo.css" type="text/css" />
+<script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="montarTabuleiro.js"></script>
+<style>
+#tabuleiro {
+	width: 1300px;
+	height: 1300px;
+	border: solid 1px;
+}
+
+.linha {
+	height: 50px;
+}
+
+.casa {
+	width: 50px;
+	height: 100%;
+	float: left;
+	cursor: pointer;
+	border: 1px solid black;
+}
+
+.casa_branca {
+	background-color: #fff;
+}
+
+.casa_preta {
+	background-color: #000;
+}
+
+.casa_selecionada {
+	background-color: #FF0000;
+}
+</style>
 </head>
 <body>
-	<div id="tabuleiro">
-	</div>
+	<div id="tabuleiro"></div>
 	<div id="info">
 		<ul>
-			<li>Casa selecionada: <span id="info_casa_selecionada"/></li>
-			<li>Peca selecionada: <span id="info_peca_selecionada"/></li>
+			<li>Casa selecionada: <span id="info_casa_selecionada" /></li>
+			<li>Peca selecionada: <span id="info_peca_selecionada" /></li>
 		</ul>
 	</div>
 </body>

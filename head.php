@@ -1,5 +1,6 @@
+<head>
 <meta charset="UTF-8" />
-<title>Document</title>
+<title>Detetive Solo</title>
 <link rel="icon" href="./assets/imagens/favicon.png" type="image/png">
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
@@ -34,8 +35,8 @@
 }
 
 .espacamentos {
-    margin-top: 20px;
-    margin-bottom: 20px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .bg {
@@ -44,82 +45,87 @@
 }
 
 .imagem-direita {
-  position: absolute;
-  right: 0; /* Posiciona à direita do contêiner */
-  top: 0; /* Posiciona no topo do contêiner */
-  /* Ajuste as dimensões da imagem conforme necessário */
-  width: 600px; /* Exemplo de largura */
-  height: auto; /* Mantém as proporções */
+	position: absolute;
+	right: 0; /* Posiciona à direita do contêiner */
+	top: 0; /* Posiciona no topo do contêiner */
+	/* Ajuste as dimensões da imagem conforme necessário */
+	width: 600px; /* Exemplo de largura */
+	height: auto; /* Mantém as proporções */
 }
 
-.border-geral{
-    border: 2px solid black;
-    border-radius: 12px;
+.border-geral {
+	border: 2px solid black;
+	border-radius: 12px;
 }
 
 .botao-total-jogadores:hover {
-  background-color: WHITE;
-  border-radius: 70px; /* Cor de fundo quando o mouse estiver sobre o botão */
+	background-color: WHITE;
+	border-radius: 70px;
+	/* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .botao-geral:hover {
-  background-color: WHITE;
-  border-radius: 30px; /* Cor de fundo quando o mouse estiver sobre o botão */
+	background-color: WHITE;
+	border-radius: 30px;
+	/* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .botao-reset:hover {
-  background-color: WHITE;
-  border-radius: 7px;
+	background-color: WHITE;
+	border-radius: 7px;
 }
 
 .botao-dados:hover {
-  background-color: WHITE;
-  border-radius: 38px; /* Cor de fundo quando o mouse estiver sobre o botão */
+	background-color: WHITE;
+	border-radius: 38px;
+	/* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .botao-iniciar:hover {
-  background-color: WHITE;
-  border-radius: 100px; /* Cor de fundo quando o mouse estiver sobre o botão */
+	background-color: WHITE;
+	border-radius: 100px;
+	/* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .clock-container {
-  display: inline-flex;
-  align-items: center;
-  gap: 20px; /* espaçamento entre relógio e botão */
+	display: inline-flex;
+	align-items: center;
+	gap: 20px; /* espaçamento entre relógio e botão */
 }
 
 .digital-clock {
-  font-family: 'Courier New', monospace;
-  font-size: 48px;
-  color: #000; /* números em preto */
-  background-color: transparent;
-  padding: 20px 40px;
-  border-radius: 12px;
-  /*letter-spacing: 4px;*/
-  border-radius: 12px;
-  border: 2px solid #000;
+	font-family: 'Courier New', monospace;
+	font-size: 48px;
+	color: #000; /* números em preto */
+	background-color: transparent;
+	padding: 20px 40px;
+	border-radius: 12px;
+	/*letter-spacing: 4px;*/
+	border-radius: 12px;
+	border: 2px solid #000;
 }
 
 .digital-clock span {
-  display: inline-block;
-  min-width: 40px;
-  text-align: center;
-  font:bold;
+	display: inline-block;
+	min-width: 40px;
+	text-align: center;
+	font: bold;
 }
 
 #pause-btn {
-  font-size: 18px;
-  padding: 12px 24px;
-  border: 2px solid #000;
-  background-color: transparent;
-  color: #000;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
+	font-size: 18px;
+	padding: 12px 24px;
+	border: 2px solid #000;
+	background-color: transparent;
+	color: #000;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: background-color 0.2s, color 0.2s;
 }
 
 #pause-btn:hover {
-  background-color: #fff;
-  color: #000;
+	background-color: #fff;
+	color: #000;
 }
 </style>
+</head>

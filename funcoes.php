@@ -10,6 +10,34 @@ function carregarEtapa($etapa){
     }    
 }
 
+function exporScriptJs(){
+    return '<script type="text/javascript">
+        
+        	function btnVibrate(){
+        		 navigator.vibrate(200);
+        	}
+        	
+            var order = true;
+        	function slideUpAndDown(trigger, element, order ){
+                $("#"+trigger).click(function(){
+                  if(order === true){
+                     $("#"+element).slideDown("slow");
+                  }else if(order === false){
+                     $("#"+element).slideUp("slow");
+                  }
+                  order = !order;
+                });
+            	return order;
+            }
+            
+        	$(document).ready(function() {
+            	$("#ficha-palpite").hide();           	
+                order = slideUpAndDown("texto-ficha", "ficha-palpite", order );
+        	});   	
+        
+        </script>';
+}
+
 function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $width = '150'){
     if ($isImagem) {
         $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-geral" alt="'.$texto.'" >';
