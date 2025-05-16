@@ -11,30 +11,29 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
     <?php
     if (!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0") {
         
-        // Selecionar a quantidade de jogadores 
-        //require_once './numero-jogadores/mobile.php';
+        // Selecionar se interface se é mobile ou desktop
         echo '<div class="row espacamentos justify-content-center">';
-        echo montarLinkInicial('./index.php?etapa=13&layout=mobile', 'Mobile', 'col-md-4', true, 'mobile.png', '400');
-        echo montarLinkInicial('./index.php?etapa=13&layout=desktop', 'Desktop', 'col-md-4', true, 'computador-borda.png', '400');
+        echo montarLinkImagem('./index.php?etapa=13&layout=mobile', 'Mobile', 'col-md-4', 'mobile.png', '200');
+        echo montarLinkImagem('./index.php?etapa=13&layout=desktop', 'Desktop', 'col-md-4', 'computador-borda.png', '200');
         echo '</div>';
         
     } else if ($_SESSION["etapa"] == "1") {
         
         // Selecionar um personagem 
         require_once './selecao-personagens/controle.php';
-        require_once './selecao-personagens/mobile.php';
+        require_once './selecao-personagens/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "2") {
         
         // Selecione a quantidade de dados & SETUP 
         require_once './inicializacao/controle.php';
-        require_once './inicializacao/mobile.php';
+        require_once './inicializacao/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "3") {
         
         // Exibir cartas do jogador, definir a ordem dos participantes, 
         require_once './cartas-iniciais/controle.php';
-        require_once './cartas-iniciais/mobile.php';
+        require_once './cartas-iniciais/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "4") {
         
@@ -91,14 +90,13 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
         // Selecionar a quantidade de jogadores
         $_SESSION["layout"] = $_GET["layout"];
-        require_once './numero-jogadores/mobile.php';
+        require_once './numero-jogadores/mobile-desktop.php';
         
     }
     
-    if($_SESSION["etapa"] > 0){
+    if ($_SESSION["etapa"] > 0){
         echo montarLinkReset();
     }
-    
     ?>
 </body>
 <?php echo exporScriptJs(true); ?>

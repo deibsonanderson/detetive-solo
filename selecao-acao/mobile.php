@@ -14,7 +14,7 @@ if ($jogador["npc"]) {
     echo montarLinkRealizarPalpiteAcusacao(true, 'col-md-4');
     echo montarLinkVoltar('col-md-4');
     echo '</div>';
-    echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha"').'</br>';
+    echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', '1', 'id="texto-ficha" style="cursor:pointer"').'</br>';
     echo exibirFichaPalpites($jogador["palpites"]);
 }
 

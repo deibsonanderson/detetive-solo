@@ -49,13 +49,13 @@ function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $widt
     }
 }
 
-function montarLinkInicial($url, $texto, $class, $isImagem = false, $urlImg = '', $width = '150'){
-    if ($isImagem) {
-        $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-total-jogadores" alt="'.$texto.'" >';
-        return '<div class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();" class="botao-total-jogadores">'.$imagem.'</a></br>'.$texto.'</div>';
-    } else {
-        return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$texto.'</a></h1>';
-    }
+function montarLinkImagem($url, $texto, $class, $urlImg, $width = '400'){
+    return '<div class="'.$class.' ">
+                <a href="'.$url.'" onclick="btnVibrate();" class="botao-geral-desktop">
+                    <img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-geral" alt="'.$texto.'" >
+                </a></br>'
+                .$texto.
+           '</div>';
 }
 
 function montarLinkFormulario($texto, $class = 'col-md-12'){
@@ -64,7 +64,7 @@ function montarLinkFormulario($texto, $class = 'col-md-12'){
 }
 
 function montarLinkReset($opcional = ''){
-    return '<div '.$opcional.'>
+    return '<div '.$opcional.' class="espacamentos">
                 <a href="./index.php?etapa=0" onclick="btnVibrate();" >
                     <img width="50" src="./assets/imagens/sair.png" class="img-fluid botao-reset" alt="Sair!">
                 </a>
@@ -117,8 +117,8 @@ function montarLinkExporCarta($class = 'col-md-12'){
     return montarLink('./index.php?etapa=7', 'Expor as Cartas!', $class, true, 'expor.png');
 }
 
-function exibirTexto($texto, $opcional = ''){
-    return '<h1 '.$opcional.' >'.$texto.'</h1>';
+function exibirTexto($texto, $tipo = '1',  $opcional = ''){
+    return '<h'.$tipo.' '.$opcional.' >'.$texto.'</h1>';
 }
 
 function debug($valor){

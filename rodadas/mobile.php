@@ -18,7 +18,7 @@
 		      $html .= montarLinkAtualizarDestino('col-md-4');
 		      echo $html.'</div>';
 		      
-		      echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha"').'</br>';
+		      echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!','1' ,'id="texto-ficha" style="cursor:pointer"').'</br>';
 		      echo exibirFichaPalpites($jogador["palpites"]);
 		  }	
 		  

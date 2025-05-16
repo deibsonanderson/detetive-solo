@@ -44,7 +44,7 @@ if($jogador["npc"]){
 		</form>
 	</div>
 	<?php
-	echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha"').'</br>';
+	echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', '1', 'id="texto-ficha" style="cursor:pointer"').'</br>';
 	echo exibirFichaPalpites($jogador["palpites"]);
 }
 ?>

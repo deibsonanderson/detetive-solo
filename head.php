@@ -61,13 +61,16 @@
 .botao-total-jogadores:hover {
 	background-color: WHITE;
 	border-radius: 70px;
-	/* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .botao-geral:hover {
 	background-color: WHITE;
 	border-radius: 30px;
-	/* Cor de fundo quando o mouse estiver sobre o botão */
+}
+
+.botao-geral-desktop:hover {
+	background-color: WHITE;
+	border-radius: 50px;
 }
 
 .botao-reset:hover {
@@ -78,13 +81,16 @@
 .botao-dados:hover {
 	background-color: WHITE;
 	border-radius: 38px;
-	/* Cor de fundo quando o mouse estiver sobre o botão */
+}
+
+.botao-dados-desktop:hover {
+	background-color: WHITE;
+	border-radius: 20px;
 }
 
 .botao-iniciar:hover {
 	background-color: WHITE;
 	border-radius: 100px;
-	/* Cor de fundo quando o mouse estiver sobre o botão */
 }
 
 .clock-container {
