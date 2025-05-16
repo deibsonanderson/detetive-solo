@@ -6,15 +6,17 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
 <html>
 <?php require_once 'head.php'; ?>
 <body class="bg">
-	<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none;">
-	<div class="container" style="text-align: center;">
+	<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none; z-index: 1;">
+	<div class="container" style="text-align: center; ">
     <?php
-    echo montarLinkReset();
-
-    if (! isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0") {
+    if (!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0") {
         
         // Selecionar a quantidade de jogadores 
-        require_once './numero-jogadores/mobile.php';
+        //require_once './numero-jogadores/mobile.php';
+        echo '<div class="row espacamentos justify-content-center">';
+        echo montarLinkInicial('./index.php?etapa=13&layout=mobile', 'Mobile', 'col-md-4', true, 'mobile.png', '400');
+        echo montarLinkInicial('./index.php?etapa=13&layout=desktop', 'Desktop', 'col-md-4', true, 'computador-borda.png', '400');
+        echo '</div>';
         
     } else if ($_SESSION["etapa"] == "1") {
         
@@ -38,7 +40,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
         // A funcção dessa etapa é navegar entre os jogadores e disponibiizar os botões para realizar alguma ação.
         require_once './rodadas/controle.php';
-        require_once './rodadas/mobile.php';
+        require_once './rodadas/'.$_SESSION["layout"].'.php';
         
     } else if ($_SESSION["etapa"] == "5") {
         
@@ -85,8 +87,19 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         require_once './selecao-destino/controle.php';
         require_once './selecao-destino/mobile.php';
         
+    } else if ($_SESSION["etapa"] == "13") {
+        
+        // Selecionar a quantidade de jogadores
+        $_SESSION["layout"] = $_GET["layout"];
+        require_once './numero-jogadores/mobile.php';
+        
     }
+    
+    if($_SESSION["etapa"] > 0){
+        echo montarLinkReset();
+    }
+    
     ?>
 </body>
-<?php echo exporScriptJs(); ?>
+<?php echo exporScriptJs(true); ?>
 </html>

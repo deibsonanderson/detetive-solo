@@ -10,7 +10,9 @@ function carregarEtapa($etapa){
     }    
 }
 
-function exporScriptJs(){
+function exporScriptJs($desktop = false){
+    $hide = (!$desktop)?' $("#ficha-palpite").hide(); ':'';
+    
     return '<script type="text/javascript">
         
         	function btnVibrate(){
@@ -31,7 +33,7 @@ function exporScriptJs(){
             }
             
         	$(document).ready(function() {
-            	$("#ficha-palpite").hide();           	
+            	'.$hide.'           	
                 order = slideUpAndDown("texto-ficha", "ficha-palpite", order );
         	});   	
         
@@ -41,6 +43,15 @@ function exporScriptJs(){
 function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $width = '150'){
     if ($isImagem) {
         $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-geral" alt="'.$texto.'" >';
+        return '<div class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();" class="botao-total-jogadores">'.$imagem.'</a></br>'.$texto.'</div>';
+    } else {
+        return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$texto.'</a></h1>';
+    }
+}
+
+function montarLinkInicial($url, $texto, $class, $isImagem = false, $urlImg = '', $width = '150'){
+    if ($isImagem) {
+        $imagem = '<img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-total-jogadores" alt="'.$texto.'" >';
         return '<div class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();" class="botao-total-jogadores">'.$imagem.'</a></br>'.$texto.'</div>';
     } else {
         return '<h1 class="'.$class.'"><a href="'.$url.'" onclick="btnVibrate();">'.$texto.'</a></h1>';
