@@ -10,6 +10,14 @@ function carregarEtapa($etapa){
     }    
 }
 
+function exibirTipoJogador($jogadores, $posicao){
+    if ($jogadores != null && count($jogadores) > 0) {
+        $jogador = retornarJogadorDaRodadaAtual($jogadores, $posicao);
+        $img = ($jogador["npc"]) ? 'computador.png' : 'humano.png';
+        return '<img width="80" src="./assets/imagens/' . $img . '" class="imagem-esquerda-superior">';
+    }
+}
+
 function exporScriptJs($desktop = false){
     $hide = (!$desktop)?' $("#ficha-palpite").hide(); ':'';
     
@@ -73,21 +81,21 @@ function montarLinkReset($opcional = ''){
             </br>';
 }
 
-function montarExibicaoConometro(){
+function montarExibicaoConometro($tamahoTexto = '6', $classRelogio = 'digital-clock', $botao = '85'){
     return '<div class="clock-container">
-                      <div class="digital-clock">
-                        <!--span id="hour">00</span>:-->
-                        <span id="minute">00</span>:
-                        <span id="second">00</span>:
-                        <span id="millisecond">000</span>
-                      </div>
-                      <div onclick="btnVibrate();" >
-                        <button id="pause-btn" onclick="cronometroPause();">
-                            <img width="85" src="./assets/imagens/pausar.png" class="img-fluid">
-                        </button>
-                      </div>
-                    </div>
-                    <p><h5>Tempo restante para a próxima rodada!</h5></p>';
+              <div class="'.$classRelogio.'">
+                <!--span id="hour">00</span>:-->
+                <span id="minute">00</span>:
+                <span id="second">00</span>:
+                <span id="millisecond">000</span>
+              </div>
+              <div onclick="btnVibrate();" >
+                <button id="pause-btn" onclick="cronometroPause(\''.$botao.'\');">
+                    <img width="'.$botao.'" src="./assets/imagens/pausar.png" class="img-fluid">
+                </button>
+              </div>
+            </div>
+            <!--p><h'.$tamahoTexto.'>Tempo restante para a próxima rodada!</h'.$tamahoTexto.'></p-->';
 }
 
 function montarLinkAtualizarDestino($class = 'col-md-12'){
@@ -441,6 +449,37 @@ function exibirFichaPalpites($palpites){
         }
         $html .= '</tbody>';
     }
+    $html .= '</table>';
+    return $html;
+}
+
+function exibirFichaPalpitesHorizontal($palpites){
+    $html =  '<table border="0" class="tabela" id="ficha-palpite">';
+    $html .= '<tr style="vertical-align: top;">';
+    foreach ($palpites as $chave => $palpite) {
+        $html .= '<td>';
+            $html .= '<table class="" border="1">';
+                $html .= '<thead>
+                            <tr><th colspan="2" class="tipoFicha">'.$chave.'</th></tr>
+                          </thead>
+                          <tbody>';
+                foreach ($palpite as $carta) {
+                    
+                    if($carta["marcado"] == 2){
+                        $marcado = 'O';
+                    } else if($carta["marcado"] == 1){
+                        $marcado = 'X';
+                    }else{
+                        $marcado = '';
+                    }
+                    
+                    $html .= '<tr><td width="235">'.$carta["nome"].'</td><td class="fichaMarcada">'.$marcado.'</td></tr>';
+                }
+                $html .= '</tbody>';
+            $html .= '</table>';
+        $html .= '</td>';
+    }
+    $html .= '</tr>';
     $html .= '</table>';
     return $html;
 }

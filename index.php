@@ -6,7 +6,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
 <html>
 <?php require_once 'head.php'; ?>
 <body class="bg">
-	<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita" style="display: none; z-index: 1;">
+	<img id="jogar-dados" src="./assets/imagens/jogar_dados.gif" class="imagem-direita-superior" style="display: none;">
 	<div class="container" style="text-align: center; ">
     <?php
     if (!isset($_SESSION["etapa"]) || $_SESSION["etapa"] == "0") {
@@ -45,19 +45,19 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
         // Essa etapa so tem a função de listar as ações que serão escolhidas!!!! 
         require_once './selecao-acao/controle.php';
-        require_once './selecao-acao/mobile.php';
+        require_once './selecao-acao/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "6") {
         
         // Essa etapa tem a função de expor as cartas que o NPC fez os palpites 
         require_once './selecao-carta-palpite-acusacao/controle.php';
-        require_once './selecao-carta-palpite-acusacao/mobile.php';
+        require_once './selecao-carta-palpite-acusacao/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "7") {
         
         // Essa etapa é reponsavel pela exposição das cartas que foi usada no palpite e que não é suspeito 
         require_once './selecao-exposicao-carta-jogador/controle.php';
-        require_once './selecao-exposicao-carta-jogador/mobile.php';
+        require_once './selecao-exposicao-carta-jogador/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "8") {
         
@@ -69,7 +69,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
         // Essa etapa é responsavel pela exibição dos palpites realizados pelo jogador humano
         require_once './exibicao-palpite-jogador/controle.php';
-        require_once './exibicao-palpite-jogador/mobile.php';
+        require_once './exibicao-palpite-jogador/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "10") {
         
@@ -94,7 +94,8 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
     }
     
-    if ($_SESSION["etapa"] > 0){
+    if ($_SESSION["etapa"] > 0){        
+        echo exibirTipoJogador($_SESSION["jogadores"], $_SESSION["posicao_jogador"]);
         echo montarLinkReset();
     }
     ?>

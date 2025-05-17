@@ -4,7 +4,7 @@ function montarTelaSelecaoPersonagem($suspeitos, $class = 'col-md-6'){
     $html = '<div class="row justify-content-center">';
     foreach ($suspeitos as $s) {
         $html .= '<div class="'.$class.' justify-content-center">';
-        $html .=      '<a href="./index.php?etapa=2&jogador=' . $s["codigo"] . '"><img width="400" src="./assets/imagens/suspeitos/' . $s["imagem"] . '" class="img-fluid" onclick="btnVibrate();"></a>';
+        $html .=      '<a href="./index.php?etapa=2&jogador=' . $s["codigo"] . '"><img width="400" src="./assets/imagens/suspeitos/' . $s["imagem"] . '" class="img-fluid border-geral" onclick="btnVibrate();"></a>';
         $html .= '</div>';
     }
     $html .= '</div>';

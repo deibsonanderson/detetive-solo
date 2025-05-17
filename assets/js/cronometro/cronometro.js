@@ -6,17 +6,19 @@ let second = 30;
 let millisecond = 999;
 let cron;
 
-function cronometroStart(link) {
-	cronometroPause();
-	$('#pause-btn').attr('onclick', 'cronometroPause();');
-	$('#pause-btn').html('<img width="85" src="./assets/imagens/pausar.png" class="img-fluid">');
+function cronometroStart(link, botao) {
+	var botao = (botao == undefined) ? '85' : botao;
+	cronometroPause(botao);
+	$('#pause-btn').attr('onclick', 'cronometroPause(\''+botao+'\');');
+	$('#pause-btn').html('<img width="' + botao + '" src="./assets/imagens/pausar.png" class="img-fluid">');
 	cron = setInterval(() => { cronometroTimer(link); }, 10);
 }
 
-function cronometroPause() {
+function cronometroPause(botao) {
+	var botao = (botao == undefined) ? '85' : botao;
 	clearInterval(cron);
-	$('#pause-btn').attr('onclick', 'cronometroStart();');
-	$('#pause-btn').html('<img width="85" src="./assets/imagens/executar.png" class="img-fluid">');
+	$('#pause-btn').attr('onclick', 'cronometroStart(null, \''+botao+'\');');
+	$('#pause-btn').html('<img width="' + botao + '" src="./assets/imagens/executar.png" class="img-fluid">');
 }
 
 function cronometroReset() {

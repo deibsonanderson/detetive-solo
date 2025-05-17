@@ -44,14 +44,27 @@
 	background: rgba(76, 175, 80, 0.3);
 }
 
-.imagem-direita {
+.imagem-direita-superior {
 	position: absolute;
 	right: 0; /* Posiciona à direita do contêiner */
 	top: 0; /* Posiciona no topo do contêiner */
 	/* Ajuste as dimensões da imagem conforme necessário */
 	width: 600px; /* Exemplo de largura */
 	height: auto; /* Mantém as proporções */
+	z-index: 1;
 }
+
+.imagem-esquerda-superior {
+	position: absolute;
+	left: 10px; /* Posiciona à direita do contêiner */
+	top: 10px; /* Posiciona no topo do contêiner */
+	/* Ajuste as dimensões da imagem conforme necessário */
+	width: 80px; /* Exemplo de largura */
+	height: auto; /* Mantém as proporções */
+	z-index: 1;
+	opacity: 30%;
+}
+
 
 .border-geral {
 	border: 2px solid black;
@@ -102,6 +115,18 @@
 .digital-clock {
 	font-family: 'Courier New', monospace;
 	font-size: 48px;
+	color: #000; /* números em preto */
+	background-color: transparent;
+	padding: 20px 40px;
+	border-radius: 12px;
+	/*letter-spacing: 4px;*/
+	border-radius: 12px;
+	border: 2px solid #000;
+}
+
+.digital-clock-desktop {
+	font-family: 'Courier New', monospace;
+	font-size: 25px;
 	color: #000; /* números em preto */
 	background-color: transparent;
 	padding: 20px 40px;

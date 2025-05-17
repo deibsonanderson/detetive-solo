@@ -9,20 +9,20 @@
 		</div>
 		<div class="col-md-6" >
     		<div class="row col-md-12 espacamentos border-geral">
-    			<h1><?php echo $jogador["nome"].'.'; ?></h1>    		
+    			<h3><?php echo $jogador["nome"].'.'; ?></h3>    		
     		</div>
     		<div class="row espacamentos">
-  				<?php echo montarExibicaoConometro(); ?>
+  				<?php echo montarExibicaoConometro('6', 'digital-clock-desktop', '53'); ?>
     		</div>
     		<div class="row col-md-12 espacamentos border-geral">
-  				<h1>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h1>
+  				<h3>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h3>
     		</div>
-    		<div class="row col-md-12 espacamentos border-geral" style="padding-left:0px">
+    		<div class="row col-md-12 border-geral" style="padding-left:0px">
 				<div class="col-md-9" style="align-self: anchor-center; text-align: left;" >
-					<?php echo exibirTexto('Próximo destino:'); ?>
+					<?php echo exibirTexto('Próximo destino:', '2'); ?>
 				</div>
 				<div class="col-md-3" >
-					<img width="200" src="./assets/imagens/locais/<?php echo $jogador["destinoAtual"]["imagem"]; ?>" class="img-fluid espacamentos">    					
+					<img width="100" src="./assets/imagens/locais/<?php echo $jogador["destinoAtual"]["imagem"]; ?>" class="img-fluid espacamentos border-geral">    					
 				</div>
     		</div>    		
     		<div class="row col-md-12 justify-content-center espacamentos">
@@ -55,7 +55,7 @@
         	setTimeout(function() {
               $('#jogar-dados').fadeOut('slow');
               $('#dados-numero').fadeIn('slow');
-              cronometroStart();
+              cronometroStart(null, '53');
             }, 1500);
 		}); 
 	</script>

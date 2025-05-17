@@ -21,7 +21,7 @@ function montarTelaCartasDistribuidas($jogador, $class = 'col-md-6'){
     $html = '<div class="row espacamentos justify-content-center">';
     foreach ($jogador["cartas"] as $carta){
         $html .= '<div class="'.$class.' justify-content-center espacamentos">';
-        $html .=      '<img width="400" src="./assets/imagens/'. recuperarCaminhoImagem($carta["tipo"], $carta["imagem"]) . '" class="img-fluid">';
+        $html .=      '<img width="400" src="./assets/imagens/'. recuperarCaminhoImagem($carta["tipo"], $carta["imagem"]) . '" class="img-fluid border-geral">';
         $html .= '</div>';
     }
     $html .= '</div>';
