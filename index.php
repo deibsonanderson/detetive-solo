@@ -49,25 +49,29 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
     } else if ($_SESSION["etapa"] == "6") {
         
-        // Essa etapa tem a função de expor as cartas que o NPC fez os palpites 
+        // Essa etapa tem a função de expor as cartas que o NPC fez os palpites
+        // Essa etapa tem a função selecionar as cartas dos palpites do jogador humano
         require_once './selecao-carta-palpite-acusacao/controle.php';
         require_once './selecao-carta-palpite-acusacao/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "7") {
         
-        // Essa etapa é reponsavel pela exposição das cartas que foi usada no palpite e que não é suspeito 
+        // Essa etapa é reponsavel pela exposição de umas das cartas que foi usada no palpite e que não é suspeito
+        // Ela localiza o proximo participante que possue uma ou mais das cartas usada no palpite
+        // Durante a localização se o escolhido for uma NPC ja sorteia e exibe uma das cartas para anotamos na nossa ficha!
+        // Durante a localização se o escolhido for uma Humano disponibiza para selecionar uma das cartas caso assim tenha redirecionando para a expor na etapa (8)
         require_once './selecao-exposicao-carta-jogador/controle.php';
         require_once './selecao-exposicao-carta-jogador/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "8") {
         
-        // Essa etapa é exlusiva do jogador humano para que possa escolher uma das cartas informada no palpite 
+        // Essa etapa é exclusiva do jogador humano para que possa escolher uma das cartas informada no palpite 
         require_once './exposicao-carta-jogador/controle.php';
-        require_once './exposicao-carta-jogador/mobile.php';
+        require_once './exposicao-carta-jogador/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "9") {
         
-        // Essa etapa é responsavel pela exibição dos palpites realizados pelo jogador humano
+        // Essa etapa é responsavel pela exibição dos palpites realizados pelo jogador humano na etapa anteiror (6)
         require_once './exibicao-palpite-jogador/controle.php';
         require_once './exibicao-palpite-jogador/mobile-desktop.php';
         

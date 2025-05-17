@@ -9,16 +9,16 @@
 		<?php
 		  $html = '<div class="row ">';
 		  if ($jogador["npc"]) {
-		      $html .= montarLinkProximaRodada('col-md-6');
-		      $html .= montarLinkChegueiLocal('col-md-6');
+		      $html .= montarLinkProximaRodada('col-md-6 espacamentos');
+		      $html .= montarLinkChegueiLocal('col-md-6 espacamentos');
 		      echo $html.'</div>';
 		  } else {
-		      $html .= montarLinkProximaRodada('col-md-4');
-		      $html .= montarLinkChegueiLocal('col-md-4');
-		      $html .= montarLinkAtualizarDestino('col-md-4');
+		      $html .= montarLinkProximaRodada('col-md-4 espacamentos');
+		      $html .= montarLinkChegueiLocal('col-md-4 espacamentos');
+		      $html .= montarLinkAtualizarDestino('col-md-4 espacamentos');
 		      echo $html.'</div>';
 		      
-		      echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!','1' ,'id="texto-ficha" style="cursor:pointer"').'</br>';
+		      //echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!','1' ,'id="texto-ficha" style="cursor:pointer"').'</br>';
 		      echo exibirFichaPalpites($jogador["palpites"]);
 		  }	
 		  

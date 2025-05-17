@@ -15,7 +15,7 @@ function montarTelaBotoesAcao($jogador, $total){
 function montarTelaFichaPalpites($jogador){
     $html = '';
     if(!$jogador["npc"]){
-        $html .= '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', '1', 'id="texto-ficha" style="cursor:pointer"').'</br>';
+        //$html .= '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', '1', 'id="texto-ficha" style="cursor:pointer"').'</br>';
         $html .= exibirFichaPalpites($jogador["palpites"]);
     }
     return $html;
@@ -23,7 +23,7 @@ function montarTelaFichaPalpites($jogador){
 
 if ($_SESSION["layout"] == 'mobile') {
     echo exibirTexto($jogador["nome"]);
-    echo '<p><img width="200" src="./assets/imagens/suspeitos/'.$jogador["imagem"].'" class="img-fluid"></p>';
+    echo '<p><img width="200" src="./assets/imagens/suspeitos/'.$jogador["imagem"].'" class="img-fluid border-geral"></p>';
     echo '<div class="row justify-content-center">';
     echo montarTelaBotoesAcao($jogador, $total);
     echo '</div>';
