@@ -320,6 +320,15 @@ function listarLocaisDisponiveisParaRodada($cartasBase, $jogador){
     return $disponiveis;
 }
 
+function recuperarJogadorPeloCodigo($jogadores, $codigo){
+    foreach ($jogadores as $jogador) {
+        if ($jogador["codigo"] == $codigo) {
+            return $jogador;
+        }        
+    }
+    return null;
+}
+
 function validarLocalInicial($inicio, $jogador, $proximoDestino, $cartasBase){
     if(!$inicio){
         return true;

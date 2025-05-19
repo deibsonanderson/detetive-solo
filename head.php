@@ -23,6 +23,15 @@
 	text-align: center;
 }
 
+.imagem-com-borda {
+    border: 2px solid transparent; /* Define uma borda transparente por padrão */
+    transition: border-color 0.3s ease; /* Transição suave para a mudança de cor */
+}
+
+.imagem-com-borda:hover {
+    border-color: white; /* Define a cor da borda (branca) ao passar o mouse */
+}
+
 .fichaMarcada {
 	text-align: center;
 	width: 30px;
