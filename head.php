@@ -74,6 +74,17 @@
 	opacity: 30%;
 }
 
+.btn-ficha-palpite {
+	position: absolute;
+	right: 0; /* Posiciona à direita do contêiner */
+	top: 0; /* Posiciona no topo do contêiner */
+	/* Ajuste as dimensões da imagem conforme necessário */
+	width: 80px; /* Exemplo de largura */
+	height: auto; /* Mantém as proporções */
+	z-index: 1;
+	opacity: 30%;
+
+}
 
 .border-geral {
 	border: 2px solid black;

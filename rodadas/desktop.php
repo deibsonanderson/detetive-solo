@@ -41,10 +41,12 @@
     		</div> 
 		</div>
 		<div class="col-md-4" >
-    		<div class="espacamentos" >
+    		<div class="espacamentos">
         	<?php
-    		  //echo exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha" style="cursor:pointer" ');
-    		  echo exibirFichaPalpites($jogador["palpites"]);
+            	if (!$jogador["npc"]) {
+        		  //echo exibirTexto('Revise a sua Ficha de Palpites!', 'id="texto-ficha" style="cursor:pointer" ');
+        		  echo exibirFichaPalpites($jogador["palpites"]);
+            	}
     		?>
     		</div>  
 		</div>

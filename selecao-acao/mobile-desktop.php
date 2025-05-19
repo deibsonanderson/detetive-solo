@@ -12,11 +12,11 @@ function montarTelaBotoesAcao($jogador, $total){
     return $html.'</div>';
 }
 
-function montarTelaFichaPalpites($jogador){
+function montarTelaFichaPalpites($jogador, $layout){
     $html = '';
-    if(!$jogador["npc"]){
-        //$html .= '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', '1', 'id="texto-ficha" style="cursor:pointer"').'</br>';
-        $html .= exibirFichaPalpites($jogador["palpites"]);
+    if (! $jogador["npc"]) {
+        // $html .= '</br>'.exibirTexto('Revise a sua Ficha de Palpites!', '1', 'id="texto-ficha" style="cursor:pointer"').'</br>';
+        $html .= ($layout == 'mobile') ? exibirFichaPalpites($jogador["palpites"]) : exibirFichaPalpitesHorizontal($jogador["palpites"]);
     }
     return $html;
 }
@@ -27,7 +27,7 @@ if ($_SESSION["layout"] == 'mobile') {
     echo '<div class="row justify-content-center">';
     echo montarTelaBotoesAcao($jogador, $total);
     echo '</div>';
-    echo montarTelaFichaPalpites($jogador);
+    echo montarTelaFichaPalpites($jogador, $_SESSION["layout"]);
 } else {
 ?>
 <div class="row col-md-12 justify-content-center" >
@@ -46,7 +46,7 @@ if ($_SESSION["layout"] == 'mobile') {
 	</div>
 </div>
 <div class="row col-md-12 justify-content-center" >
-<?php echo exibirFichaPalpitesHorizontal($jogador["palpites"]); ?>
+<?php echo montarTelaFichaPalpites($jogador, $_SESSION["layout"]); ?>
 </div>
 <?php 
 }

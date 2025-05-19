@@ -437,8 +437,20 @@ function montarFichasDePalpites($jogadores, $cartasBase, $criminoso, $debug = fa
     return $palpites;
 }
 
-function exibirFichaPalpites($palpites){
-    $html =  '<table border="1" class="tabela" id="ficha-palpite">';
+function montarModalFichaPalpite($jogadores){
+    $jogador = retornarJogadorHumano($jogadores);
+    return '<img width="80" src="./assets/imagens/folheto.png" class="btn-ficha-palpite" data-toggle="modal" data-target="#modal-ficha-palpite">
+            <div class="modal fade" id="modal-ficha-palpite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    '.exibirFichaPalpites($jogador["palpites"], 'style="background: white;"').'
+                </div>
+              </div>
+            </div>';
+}
+
+function exibirFichaPalpites($palpites, $opcional = ''){
+    $html =  '<table border="1" class="tabela" id="ficha-palpite" '.$opcional.' >';
     foreach ($palpites as $chave => $palpite) {
         $html .= '<thead>
                     <tr><th colspan="2" class="tipoFicha">'.$chave.'</th></tr>

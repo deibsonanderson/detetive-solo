@@ -101,8 +101,15 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
     if ($_SESSION["etapa"] > 0){        
         echo exibirTipoJogador($_SESSION["jogadores"], $_SESSION["posicao_jogador"]);
         echo montarLinkReset();
+        
+        if($_SESSION["etapa"] > 4 && $_SESSION["etapa"] < 13){
+            echo montarModalFichaPalpite();
+        }
     }
     ?>
+    
+
+    
 </body>
 <?php echo exporScriptJs(true); ?>
 </html>
