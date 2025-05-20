@@ -7,20 +7,25 @@
 	<?php echo montarExibicaoConometro(); ?>
 	
 		<?php
-		  $html = '<div class="row ">';
+		  $html = '<div class="row justify-content-center">
+                        <div class="row">';
 		  if ($jogador["npc"]) {
 		      $html .= montarLinkProximaRodada('col-md-6 espacamentos');
 		      $html .= montarLinkChegueiLocal('col-md-6 espacamentos');
-		      echo $html.'</div>';
+		      $html .= '</div>
+                   </div>';
 		  } else {
 		      $html .= montarLinkProximaRodada('col-md-4 espacamentos');
 		      $html .= montarLinkChegueiLocal('col-md-4 espacamentos');
 		      $html .= montarLinkAtualizarDestino('col-md-4 espacamentos');
-		      echo $html.'</div>';
+		      $html .= '</div>
+                   </div>';
 		      
 		      //echo '</br>'.exibirTexto('Revise a sua Ficha de Palpites!','1' ,'id="texto-ficha" style="cursor:pointer"').'</br>';
-		      echo exibirFichaPalpites($jogador["palpites"]);
+		      $html .= exibirFichaPalpites($jogador["palpites"]);
 		  }	
+		  
+		  echo $html;
 		  
 	?>
 	

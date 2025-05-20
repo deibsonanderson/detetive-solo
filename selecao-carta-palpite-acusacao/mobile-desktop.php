@@ -1,22 +1,28 @@
 <?php 
 function montarTelaFormularioPalpiteAcusacao($etapa, $suspeitos, $armas, $locais){
-    return '<form action="./index.php" method="get" id="myForm" class="col-md-6 tabela">
+    return '<form action="./index.php" method="get" id="myForm" class="col-md-8 tabela">
     			<input type="hidden" name="etapa" value="'.$etapa.'">
-    			<div class="form-group">
-    				<label for="suspeito" style="font-size: xx-large;">Suspeito</label> 
-                    <select name="suspeito" id="suspeito" class="form-control form-control-lg col-md-">
+    			<div class="form-group row align-items-center">
+    				<label for="suspeito" style="font-size: xx-large;" class="col-md-2">
+                        <img width="80" src="./assets/imagens/suspeito.png" class="img-fluid">
+                    </label> 
+                    <select name="suspeito" id="suspeito" class="form-control form-control-lg col-md-8">
                 		'.montarComboBoxPorLista($suspeitos).'
             		</select>
     			</div>
-    			<div class="form-group">
-    				<label for="arma" style="font-size: xx-large;">Arma</label> 
-    				<select name="arma" id="arma" class="form-control form-control-lg">
+    			<div class="form-group row align-items-center">
+    				<label for="arma" style="font-size: xx-large;" class="col-md-2" >
+                        <img width="80" src="./assets/imagens/arma.png" class="img-fluid">
+                    </label> 
+    				<select name="arma" id="arma" class="form-control form-control-lg col-md-8">
     					'.montarComboBoxPorLista($armas).'
     				</select>
     			</div>
-    			<div class="form-group">
-    				<label for="local" style="font-size: xx-large;">Local</label> 
-    				<select name="local" id="local" class="form-control form-control-lg">
+    			<div class="form-group row align-items-center">
+    				<label for="local" style="font-size: xx-large;" class="col-md-2" >
+                        <img width="80" src="./assets/imagens/localizador-de-mapa.png" class="img-fluid">
+                    </label> 
+    				<select name="local" id="local" class="form-control form-control-lg col-md-8">
     					'.montarComboBoxPorLista($locais).'
     				</select>
     			</div>
@@ -59,13 +65,14 @@ function montarTelaSelecaoCartaPalpiteAcusacao($jogador, $etapa, $suspeito, $arm
 }
 
 function montarTelaSelecaoCartaPalpiteAcusacaoDesktop($jogador, $etapa, $suspeito, $arma, $local, $suspeitos, $armas, $locais) {
-    $form = '<div class="row col-md-12 justify-content-center" >
-            	<div class="col-md-9 justify-content-center" >
+    $texto = '';//exibirTexto('Revise a sua Ficha de Palpites!', '3', 'id="texto-ficha" style="cursor:pointer"');
+    $form = '<div class="row col-md-12 justify-content-center espacamentos" >
+            	<div class="col-md-9 justify-content-center espacamentos" >
                     ' . exibirTexto('Selecine cada um dos tipos de cartas!') . '
                     ' . montarTelaFormularioPalpiteAcusacao($etapa, $suspeitos, $armas, $locais) . '
             	</div>
-            	<div class="col-md-3 " >
-            		' . exibirTexto('Revise a sua Ficha de Palpites!', '3', 'id="texto-ficha" style="cursor:pointer"') . '
+            	<div class="col-md-3 espacamentos" >
+            		' . $texto . '
                     ' . exibirFichaPalpites($jogador["palpites"]) . '
             	</div>
             </div>';

@@ -103,7 +103,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         echo montarLinkReset();
         
         if($_SESSION["etapa"] > 4 && $_SESSION["etapa"] < 13){
-            echo montarModalFichaPalpite();
+            echo montarModalFichaPalpite($_SESSION["jogadores"]);
         }
     }
     ?>

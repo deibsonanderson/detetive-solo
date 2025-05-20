@@ -2,11 +2,14 @@
 function montarTelaFormularioDestinoInicial($locais, $class = 'col-md-6', $opcional = '') {
     return '<form action="./index.php" method="get" id="myForm" class="'.$class.' tabela" '.$opcional.' >
     			<input type="hidden" name="etapa" value="11">
-    			<div class="form-group">
-    				<select name="local" id="local" class="form-control form-control-lg" style="font-size: xx-large;">
-    					'.montarComboBoxPorLista($locais).'
-    				</select>
-    			</div>
+    			<div class="form-group row align-items-center">
+    				<label for="local" style="font-size: xx-large;" class="col-md-2">
+                        <img width="80" src="./assets/imagens/localizador-de-mapa.png" class="img-fluid">
+                    </label> 
+                    <select name="local" id="local" class="form-control form-control-lg col-md-10">
+                		'.montarComboBoxPorLista($locais).'
+            		</select>
+    			</div>    			
     			<div class="form-group">
         			<h1>
             			<a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
@@ -40,12 +43,17 @@ if ($_SESSION["layout"] == 'mobile') {
     echo montarTelaCartasDistribuidas($jogador);
 } else {
     ?>
-    <div class="row espacamentos">
+    <div class="row col-md-12 espacamentos">
         <div class="col-md-4 justify-content-center ">
-        	<?php 
-        	   echo exibirTexto($tituloForm, '2');  
-               echo montarTelaFormularioDestinoInicial($locais, 'col-md-12'); 
-        	?>
+            <div class="row col-md-12 justify-content-center ">
+            	<?php echo exibirTexto($tituloForm, '2'); ?>
+            </div>
+            <div class="row col-md-12 justify-content-center ">
+            	<img width="80" src="./assets/imagens/localizador-de-mapa.png" class="img-fluid">
+            </div>
+            <div class="row col-md-12 justify-content-center espacamentos">
+            	<?php echo montarTelaFormularioDestinoInicial($locais, 'col-md-12'); ?>
+            </div>        	
         </div>
         <div class="row col-md-8 justify-content-center ">
         	<?php 

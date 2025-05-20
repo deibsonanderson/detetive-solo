@@ -442,7 +442,7 @@ function montarModalFichaPalpite($jogadores){
     return '<img width="80" src="./assets/imagens/folheto.png" class="btn-ficha-palpite" data-toggle="modal" data-target="#modal-ficha-palpite">
             <div class="modal fade" id="modal-ficha-palpite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <div class="modal-content">
+                <div class="!modal-content">
                     '.exibirFichaPalpites($jogador["palpites"], 'style="background: white;"').'
                 </div>
               </div>
