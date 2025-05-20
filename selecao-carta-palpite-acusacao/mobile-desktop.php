@@ -37,7 +37,8 @@ function montarTelaFormularioPalpiteAcusacao($etapa, $suspeitos, $armas, $locais
 
 function montarTelaCartasPalpiteAcusacao($jogador, $suspeito, $arma, $local, $class = 'col-md-12'){
     return '<div class="row col-md-12 justify-content-center" style="text-align: center;">
-                '.exibirTexto('O NPC '.$jogador["nome"].', fez o palpite com as cartas: ').'    
+                <div class="espacamentos '.$class.' "><img width="100" src="./assets/imagens/suspeitos/'.$jogador["imagem"].'" class="img-fluid border-geral"></div>	
+                '.exibirTexto('O NPC - '.$jogador["nome"].', fez o palpite com as seguintes cartas: ').'    
                 <div class="espacamentos '.$class.' "><img width="200" src="./assets/imagens/suspeitos/'.$suspeito["imagem"].'" class="img-fluid border-geral"></div>	
                 <div class="espacamentos '.$class.' "><img width="200" src="./assets/imagens/armas/'.$arma["imagem"].'" class="img-fluid border-geral"></div>	
                 <div class="espacamentos '.$class.' "><img width="200" src="./assets/imagens/locais/'.$local["imagem"].'" class="img-fluid border-geral"></div>	

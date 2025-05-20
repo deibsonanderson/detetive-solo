@@ -439,12 +439,38 @@ function montarFichasDePalpites($jogadores, $cartasBase, $criminoso, $debug = fa
 
 function montarModalFichaPalpite($jogadores){
     $jogador = retornarJogadorHumano($jogadores);
-    return '<img width="80" src="./assets/imagens/folheto.png" class="btn-ficha-palpite" data-toggle="modal" data-target="#modal-ficha-palpite">
-            <div class="modal fade" id="modal-ficha-palpite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    $html = '<img width="80" src="./assets/imagens/folheto.png" class="btn-ficha-palpite" data-toggle="modal" data-target="#modal-ficha-palpite">';
+    $html .= montarModalGeral('modal-ficha-palpite', exibirFichaPalpites($jogador["palpites"], 'style="background: white;"'), '');
+    return $html;
+}
+
+function montarModalManual(){
+    $html = '<img width="80" src="./assets/imagens/folheto.png" class="btn-modal-manual" data-toggle="modal" data-target="#modal-manual">';
+    
+    $conteudo = '';
+    for ($i = 1; $i <= 4; $i++) {
+        $conteudo .= '<div class="row col-md-12 justify-content-center espacamentos" >
+                		<div class="row col-md-12 justify-content-center espacamentos">
+                    		<img style="background: white;" src="./assets/imagens/manual/'. $i.'.png" class="img-fluid border-geral">
+                		</div>   
+                	  </div>';    
+        }  
+        $html .= montarModalGeral('modal-manual', $conteudo, '');
+    return $html;
+}
+
+function montarModalGeral($id = '', $conteudo = '', $classe = 'modal-content', $isRodape = false){
+    $rodape = '<div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               </div>';
+    $rodape = ($isRodape) ? $rodape : '';
+
+    return '<div class="modal fade" id="' . $id . '" tabindex="-1" role="dialog" aria-labelledby="' . $id . '" aria-hidden="true">
               <div class="modal-dialog" role="document">
-                <div class="!modal-content">
-                    '.exibirFichaPalpites($jogador["palpites"], 'style="background: white;"').'
+                <div class="' . $classe . '">
+                    ' . $conteudo . '
                 </div>
+                ' . $rodape . '    
               </div>
             </div>';
 }

@@ -14,7 +14,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         // Selecionar se interface se é mobile ou desktop
         echo '<div class="row espacamentos justify-content-center">';
         echo montarLinkImagem('./index.php?etapa=13&layout=mobile', 'Mobile', 'col-md-4', 'mobile.png', '200');
-        echo montarLinkImagem('./manual-detetive.php', 'Manual', 'col-md-4', 'livro.png', '200', 'target="_blank"');
+        echo montarLinkImagem('./index.php?etapa=14', 'Manual', 'col-md-4', 'livro.png', '200', 'target="_blank"');
         echo montarLinkImagem('./index.php?etapa=13&layout=desktop', 'Desktop', 'col-md-4', 'computador-borda.png', '200');
         echo '</div>';
         
@@ -97,15 +97,29 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         $_SESSION["layout"] = $_GET["layout"];
         require_once './numero-jogadores/mobile-desktop.php';
         
+    } else if ($_SESSION["etapa"] == "14") {
+    
+        
+        for ($i = 1; $i <= 4; $i++) {
+            ?>
+            <div class="row col-md-12 justify-content-center espacamentos" >
+        		<div class="row col-md-12 justify-content-center espacamentos">
+            		<img src="./assets/imagens/manual/<?php echo $i; ?>.png" class="img-fluid border-geral">
+        		</div>   
+        	</div>    
+            <?php 
+        }    
+        
     }
     
     if ($_SESSION["etapa"] > 0){        
         echo exibirTipoJogador($_SESSION["jogadores"], $_SESSION["posicao_jogador"]);
-        echo montarLinkReset();
-        
+        echo montarLinkReset();        
         if($_SESSION["etapa"] > 4 && $_SESSION["etapa"] < 13){
             echo montarModalFichaPalpite($_SESSION["jogadores"]);
+            
         }
+        echo montarModalManual();
     }
     ?>
     

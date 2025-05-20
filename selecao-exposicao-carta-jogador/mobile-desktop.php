@@ -1,7 +1,9 @@
 <?php
 function montarTelaSelecaoExposicaoCarta($acao, $jogadorEncontrado, $encontradas, $width = '400'){
     if ($acao === 1) {
-        $html = exibirTexto('A carta localizada do jogador, ' . $jogadorEncontrado["nome"] . ' é:');
+        $html .= exibirTexto('O jogador dono da carta é: ' . $jogadorEncontrado["nome"], '1', 'espacamentos');
+        $html .= '<p><img width="200" src="./assets/imagens/' . recuperarCaminhoImagem($jogadorEncontrado["tipo"], $jogadorEncontrado["imagem"]) . '" class="img-fluid border-geral"></p>';
+        $html .= exibirTexto('E a carta escolhida foi: ', '1', 'espacamentos');
         $html .= '<p><img width="'.$width.'" src="./assets/imagens/' . recuperarCaminhoImagem($encontradas[0]["tipo"], $encontradas[0]["imagem"]) . '" class="img-fluid border-geral"></p>';
         $html .= montarLinkProximaRodada();
     } else if ($acao === 2) {
