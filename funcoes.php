@@ -445,8 +445,8 @@ function montarModalFichaPalpite($jogadores){
 }
 
 function montarModalManual(){
-    $html = '<img width="80" src="./assets/imagens/folheto.png" class="btn-modal-manual" data-toggle="modal" data-target="#modal-manual">';
-    
+    $html = '<img width="80" src="./assets/imagens/livro.png" class="btn-modal-manual espacamentos" data-toggle="modal" data-target="#modal-manual">';
+   
     $conteudo = '';
     for ($i = 1; $i <= 4; $i++) {
         $conteudo .= '<div class="row col-md-12 justify-content-center espacamentos" >

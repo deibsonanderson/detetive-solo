@@ -119,7 +119,11 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
             echo montarModalFichaPalpite($_SESSION["jogadores"]);
             
         }
-        echo montarModalManual();
+        
+        if($_SESSION["etapa"] > 0 && $_SESSION["etapa"] < 14){
+            echo montarModalManual();
+        }
+       
     }
     ?>
     

@@ -2,7 +2,7 @@
 
 let hour = 0;
 let minute = 0;
-let second = 30;
+let second = 29;
 let millisecond = 999;
 let cron;
 

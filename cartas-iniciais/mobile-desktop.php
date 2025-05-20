@@ -9,7 +9,18 @@ function montarTelaFormularioDestinoInicial($locais, $class = 'col-md-6', $opcio
                     <select name="local" id="local" class="form-control form-control-lg col-md-10">
                 		'.montarComboBoxPorLista($locais).'
             		</select>
-    			</div>    			
+    			</div>
+    			<div class="form-group row align-items-center">
+    				<label for="local" style="font-size: xx-large;" class="col-md-2">
+                        <img width="80" src="./assets/imagens/relogio.png" class="img-fluid">
+                    </label> 
+                    <select name="tempo" id="tempo" class="form-control form-control-lg col-md-10">
+                		<option value="14" selected >15 Segundos</option>
+                        <option value="29" >30 Segundos</option>
+                        <option value="44" >45 Segundos</option>
+                        <option value="59" >60 Segundos</option>
+            		</select>
+    			</div>      			
     			<div class="form-group">
         			<h1>
             			<a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">
@@ -47,9 +58,6 @@ if ($_SESSION["layout"] == 'mobile') {
         <div class="col-md-4 justify-content-center ">
             <div class="row col-md-12 justify-content-center ">
             	<?php echo exibirTexto($tituloForm, '2'); ?>
-            </div>
-            <div class="row col-md-12 justify-content-center ">
-            	<img width="80" src="./assets/imagens/localizador-de-mapa.png" class="img-fluid">
             </div>
             <div class="row col-md-12 justify-content-center espacamentos">
             	<?php echo montarTelaFormularioDestinoInicial($locais, 'col-md-12'); ?>
