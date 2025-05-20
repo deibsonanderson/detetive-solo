@@ -62,13 +62,7 @@
         	setTimeout(function() {
               $('#jogar-dados').fadeOut('slow');
               $('#dados-numero').fadeIn('slow');
-              <?php 
-              if($_SESSION["tempo"] != null && $_SESSION["tempo"] > 0 ){
-                  echo 'second = '.$_SESSION["tempo"];   
-              }
-              ?>
-              
-              
+              <?php echo $second; ?>
               cronometroStart(null, '53');
             }, 1500);
 		}); 

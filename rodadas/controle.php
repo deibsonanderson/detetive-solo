@@ -9,4 +9,10 @@ $jogador = retornarJogadorDaRodadaAtual($_SESSION["jogadores"], $_SESSION["posic
 // Os dados que o NPC vai jogar
 $totalDados = lancarDados($_SESSION["qtd_dados"]);
 
+// esse bloco tem a função de sobescrever a variavel presente no cronometro.js
+$second = ' ';
+if($_SESSION["tempo"] != null && $_SESSION["tempo"] > 0 ){
+    $second = 'second = '.$_SESSION["tempo"].';';
+}
+
 ?>

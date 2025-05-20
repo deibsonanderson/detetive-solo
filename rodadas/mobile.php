@@ -39,6 +39,7 @@
         	setTimeout(function() {
               $('#jogar-dados').fadeOut('slow');
               $('#dados-numero').fadeIn('slow');
+              <?php echo $second; ?>
               cronometroStart('85');
             }, 1500);
 		}); 
