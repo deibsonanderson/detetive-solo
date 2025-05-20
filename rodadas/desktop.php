@@ -5,14 +5,19 @@
     		</div>   
     		<div class="row col-md-12 espacamentos">
 	    		<img width="150" src="./assets/imagens/<?php echo ($jogador["npc"])? 'computador.png' : 'humano.png'; ?>" class="img-fluid border-geral">
-    		</div>   		
+    		</div>
 		</div>
 		<div class="col-md-6" >
     		<div class="row col-md-12 espacamentos border-geral">
     			<h3><?php echo $jogador["nome"].'.'; ?></h3>    		
     		</div>
     		<div class="row espacamentos">
-  				<?php echo montarExibicaoConometro('6', 'digital-clock-desktop', '53'); ?>
+    			<div class="row col-md-9 espacamentos">
+    				<?php echo montarExibicaoConometro('6', 'digital-clock-desktop', '53'); ?>
+    			</div>
+    			<div class="row col-md-3 espacamentos justify-content-center">
+    				<img width="50" src="./assets/imagens/pinus/<?php echo $jogador["pinu"]; ?>.png" class="img-fluid">
+    			</div>  	
     		</div>
     		<div class="row col-md-12 espacamentos border-geral">
   				<h3>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h3>

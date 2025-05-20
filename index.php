@@ -14,6 +14,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         // Selecionar se interface se é mobile ou desktop
         echo '<div class="row espacamentos justify-content-center">';
         echo montarLinkImagem('./index.php?etapa=13&layout=mobile', 'Mobile', 'col-md-4', 'mobile.png', '200');
+        echo montarLinkImagem('./manual-detetive.php', 'Manual', 'col-md-4', 'livro.png', '200', 'target="_blank"');
         echo montarLinkImagem('./index.php?etapa=13&layout=desktop', 'Desktop', 'col-md-4', 'computador-borda.png', '200');
         echo '</div>';
         

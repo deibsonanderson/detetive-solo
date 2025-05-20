@@ -16,6 +16,12 @@ if ($totalLocalizados == null || count($totalLocalizados["encontradas"]) == 0) {
     } else {
         // Apos o palpite se o proximo da vez for o jogador humano você deve ele escolhe uma das cartas selecionada e ja marca como descartadas
         $acao = 2;
+        
+        //Caso o jogador humano so tenho 1 carta não é necessário clicar sendo redirecionado automaticamente para a pagina que exibe uma das cartas do palpite
+        $totalEncontradas = count($encontradas);
+        if($totalEncontradas == 1){
+            echo '<script>window.location.href = "./index.php?etapa=8&carta=' . $encontradas[0]["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'";</script>';
+        }
     }
 }
 ?>

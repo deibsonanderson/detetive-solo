@@ -26,10 +26,10 @@ function montarTelaFormularioPalpiteAcusacao($etapa, $suspeitos, $armas, $locais
     					'.montarComboBoxPorLista($locais).'
     				</select>
     			</div>
-    			<div class="form-group">
+    			<div class="form-group row justify-content-center">
     				<div class="row">
                     '.montarLinkFormulario('Confirmar!', 'col-md-6').'
-                    '.montarLinkVoltar('col-md-6').'
+                    '.montarLinkVoltar('col-md-6', '5').'
     				</div>
         		</div>
     		</form>';

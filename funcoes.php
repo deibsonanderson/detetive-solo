@@ -57,9 +57,9 @@ function montarLink($url, $texto, $class, $isImagem = false, $urlImg = '', $widt
     }
 }
 
-function montarLinkImagem($url, $texto, $class, $urlImg, $width = '400'){
+function montarLinkImagem($url, $texto, $class, $urlImg, $width = '400', $opcional = ''){
     return '<div class="'.$class.' ">
-                <a href="'.$url.'" onclick="btnVibrate();" class="botao-geral-desktop">
+                <a href="'.$url.'" onclick="btnVibrate();" class="botao-geral-desktop" '.$opcional.' >
                     <img width="'.$width.'" src="./assets/imagens/'.$urlImg.'" class="img-fluid botao-geral" alt="'.$texto.'" >
                 </a></br>'
                 .$texto.
@@ -117,8 +117,8 @@ function montarLinkProximaRodada($class = 'col-md-12'){
     return montarLink('./index.php?etapa=4', 'Proxima Rodada!', $class, true, 'proximo.png');
 }
 
-function montarLinkVoltar($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=4&voltar=true', 'Voltar!', $class, true, 'voltar.png');
+function montarLinkVoltar($class = 'col-md-12', $etapa = '4'){
+    return montarLink('./index.php?etapa='.$etapa.'&voltar=true', 'Voltar!', $class, true, 'voltar.png');
 }
 
 function montarLinkExporCarta($class = 'col-md-12'){

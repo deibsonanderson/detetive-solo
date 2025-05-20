@@ -5,8 +5,15 @@ function montarTelaExporCartasPalpiteAcusacaoHumano($suspeito, $arma, $local, $c
                 <div class="espacamentos '.$class.' "><img width="200" src="./assets/imagens/suspeitos/'.$suspeito["imagem"].'" class="img-fluid border-geral"></div>
                 <div class="espacamentos '.$class.' "><img width="200" src="./assets/imagens/armas/'.$arma["imagem"].'" class="img-fluid border-geral"></div>
                 <div class="espacamentos '.$class.' "><img width="200" src="./assets/imagens/locais/'.$local["imagem"].'" class="img-fluid border-geral"></div>
-            	'.montarLinkExporCarta().'
-        	</div>';
+
+        	</div>
+            <div class="row justify-content-center">
+                <div class="row">
+                	'.montarLinkExporCarta('col-md-6 espacamentos').'
+                    '.montarLinkVoltar('col-md-6 espacamentos', '6').'            
+                </div>
+            </div>
+';
 }
 
 if ($_SESSION["layout"] == 'mobile') {

@@ -12,14 +12,14 @@ $CARTAS_BASE = array(
     "TESOURA" => array("codigo" => 57, "nome" => "Tesoura", "tipo" => "ARMA", "imagem" => "57.png"),
     
     //SUSPEITO
-    "ADVOGADO" => array("codigo" => 70, "nome" => "Advogado - Sr. Marinho", "tipo" => "SUSPEITO", "pino" => "VERDE", "local" => "PRACA_CENTRAL", "imagem" => "70.png"),
-    "SARGENTO" => array("codigo" => 71, "nome" => "Sargento - Bigode", "tipo" => "SUSPEITO", "pino" => "AMARELO", "local" => "PREFEITURA", "imagem" => "71.png"),
-    "MORDOMO" => array("codigo" => 72, "nome" => "Mordomo - James", "tipo" => "SUSPEITO", "pino" => "AZUL", "local" => "MANSAO", "imagem" => "72.png"),
-    "MEDICA" => array("codigo" => 73, "nome" => "Medica - Dona Violeta", "tipo" => "SUSPEITO", "pino" => "ROSA", "local" => "HOSPITAL", "imagem" => "73.png"),
-    "DANCARINA" => array("codigo" => 74, "nome" => "Dancarina - Srta. Rosa", "tipo" => "SUSPEITO", "pino" => "VERMELHO", "local" => "BOATE", "imagem" => "74.png"),
-    "FLORISTA" => array("codigo" => 75, "nome" => "Florista - Dona Branca", "tipo" => "SUSPEITO", "pino" => "BRANCO", "local" => "FLORICULTURA", "imagem" => "75.png"),
-    "CHEF_COZINHA" => array("codigo" => 76, "nome" => "Chef de Cozinha - Tony Gourmet", "tipo" => "SUSPEITO", "pino" => "MARROM", "local" => "RESTAURANTE", "imagem" => "76.png"),
-    "COVEIRO" => array("codigo" => 77, "nome" => "Coveiro - Sergio Saturno", "tipo" => "SUSPEITO", "pino" => "PRETO", "local" => "CEMITERIO", "imagem" => "77.png"),
+    "ADVOGADO" => array("codigo" => 70, "nome" => "Advogado - Sr. Marinho", "tipo" => "SUSPEITO", "pinu" => "VERDE", "local" => "PRACA_CENTRAL", "imagem" => "70.png"),
+    "SARGENTO" => array("codigo" => 71, "nome" => "Sargento - Bigode", "tipo" => "SUSPEITO", "pinu" => "AMARELO", "local" => "PREFEITURA", "imagem" => "71.png"),
+    "MORDOMO" => array("codigo" => 72, "nome" => "Mordomo - James", "tipo" => "SUSPEITO", "pinu" => "AZUL", "local" => "MANSAO", "imagem" => "72.png"),
+    "MEDICA" => array("codigo" => 73, "nome" => "Medica - Dona Violeta", "tipo" => "SUSPEITO", "pinu" => "ROSA", "local" => "HOSPITAL", "imagem" => "73.png"),
+    "DANCARINA" => array("codigo" => 74, "nome" => "Dancarina - Srta. Rosa", "tipo" => "SUSPEITO", "pinu" => "VERMELHO", "local" => "BOATE", "imagem" => "74.png"),
+    "FLORISTA" => array("codigo" => 75, "nome" => "Florista - Dona Branca", "tipo" => "SUSPEITO", "pinu" => "BRANCO", "local" => "FLORICULTURA", "imagem" => "75.png"),
+    "CHEF_COZINHA" => array("codigo" => 76, "nome" => "Chef de Cozinha - Tony Gourmet", "tipo" => "SUSPEITO", "pinu" => "MARROM", "local" => "RESTAURANTE", "imagem" => "76.png"),
+    "COVEIRO" => array("codigo" => 77, "nome" => "Coveiro - Sergio Saturno", "tipo" => "SUSPEITO", "pinu" => "PRETO", "local" => "CEMITERIO", "imagem" => "77.png"),
     
     //LOCAL
     "PREFEITURA" => array("codigo" => 89, "nome" => "Prefeitura", "tipo" => "LOCAL", "imagem" => "89.png"),

@@ -1,10 +1,14 @@
 	<p><h1><?php echo $jogador["nome"].'.'; ?></h1></p>	
 	<p><img width="200" src="./assets/imagens/suspeitos/<?php echo $jogador["imagem"].'.'; ?>" class="img-fluid border-geral"></p>
-	<p><h1><img width="80" src="./assets/imagens/<?php echo ($jogador["npc"])? 'computador.png' : 'humano.png'; ?>" class="img-fluid"></h1></p>
+	<p><h1>
+		<img width="80" src="./assets/imagens/<?php echo ($jogador["npc"])? 'computador.png' : 'humano.png'; ?>" class="img-fluid">
+		<img width="50" src="./assets/imagens/pinus/<?php echo $jogador["pinu"]; ?>.png" class="img-fluid">
+	</h1></p>
 	<p><h1>Movimente <span id="dados-numero" style="display: none; font-size: larger; color: RED;"><?php echo $totalDados; ?></span> casas!</h1></p>
 	<p><?php echo exibirTexto('Seu destino atual é: '.$jogador["destinoAtual"]["nome"]).'</br>'; ?></p>
 	
-	<?php echo montarExibicaoConometro(); ?>
+	<?php 
+	echo montarExibicaoConometro(); ?>
 	
 		<?php
 		  $html = '<div class="row justify-content-center">
