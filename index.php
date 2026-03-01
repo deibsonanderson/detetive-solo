@@ -14,7 +14,7 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         // Selecionar se interface se é mobile ou desktop
         echo '<div class="row espacamentos justify-content-center">';
         echo montarLinkImagem('./index.php?etapa=13&layout=mobile', 'Mobile', 'col-md-4', 'mobile.png', '200');
-        echo montarLinkImagem('./index.php?etapa=14', 'Manual', 'col-md-4', 'livro.png', '200', 'target="_blank"');
+        echo montarLinkImagem('./index.php?etapa=14', 'Manual', 'col-md-4', 'livro.png', '200', 'target="_self"');
         echo montarLinkImagem('./index.php?etapa=13&layout=desktop', 'Desktop', 'col-md-4', 'computador-borda.png', '200');
         echo '</div>';
         
@@ -83,11 +83,14 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         require_once './desfecho-acusacao/mobile.php';
         
     } else if ($_SESSION["etapa"] == "11") {
-
+		
+		// controlador utilizado apenas para atualizar o proximo destino que é feito atraves da etapa 12.
+		// Essa etapa não tem tela sua pricipal função é apenas atualizar o proximo destino.
         require_once './atualizar-destino/controle.php';
         
     } else if ($_SESSION["etapa"] == "12") {
 
+		// Essa é a tela responsavel por atualizar o proximo destino para ir ao mapa e realizar o palpite
         require_once './selecao-destino/controle.php';
         require_once './selecao-destino/mobile.php';
         
@@ -98,17 +101,8 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         require_once './numero-jogadores/mobile-desktop.php';
         
     } else if ($_SESSION["etapa"] == "14") {
-    
-        
-        for ($i = 1; $i <= 4; $i++) {
-            ?>
-            <div class="row col-md-12 justify-content-center espacamentos" >
-        		<div class="row col-md-12 justify-content-center espacamentos">
-            		<img src="./assets/imagens/manual/<?php echo $i; ?>.png" class="img-fluid border-geral">
-        		</div>   
-        	</div>    
-            <?php 
-        }    
+		echo montarLinkReset('','');   
+        echo montarManual(); 
         
     }
     
@@ -122,12 +116,9 @@ error_reporting(E_ALL & ~ E_NOTICE & ~ E_DEPRECATED & ~ E_WARNING);
         
         if($_SESSION["etapa"] > 0 && $_SESSION["etapa"] < 14){
             echo montarModalManual();
-        }
-       
+        }       
     }
     ?>
-    
-
     
 </body>
 <?php echo exporScriptJs(true); ?>

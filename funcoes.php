@@ -71,14 +71,13 @@ function montarLinkFormulario($texto, $class = 'col-md-12'){
     return '<div class="'.$class.'"><a href="#" onclick="document.getElementById(\'myForm\').submit(); return false;">'.$imagem.'</a></br>'.$texto.'</div>';
 }
 
-function montarLinkReset($opcional = ''){
+function montarLinkReset($opcional = '', $newLine = '</br>'){
     return '<div '.$opcional.' class="espacamentos">
                 <a href="./index.php?etapa=0" onclick="btnVibrate();" >
                     <img width="50" src="./assets/imagens/sair.png" class="img-fluid botao-reset" alt="Sair!">
                 </a>
                 </br>Sair!
-            </div>
-            </br>';
+            </div>'.$newLine;
 }
 
 function montarExibicaoConometro($tamahoTexto = '6', $classRelogio = 'digital-clock', $botao = '85'){
@@ -608,5 +607,17 @@ function montarHtmlFichaDebug(){
     return $html;
 }
 
-$_SESSION["etapa"] = carregarEtapa($_GET["etapa"]);
+function montarManual(){
+	for ($i = 1; $i <= 4; $i++) {
+		$html .= '<div class="row col-md-12 justify-content-center espacamentos" >';
+		$html .= '    <div class="row col-md-12 justify-content-center espacamentos">';
+		$html .= '        <img src="./assets/imagens/manual/'.$i.'.png" class="img-fluid border-geral">';
+		$html .= '   </div>';
+		$html .= '</div>';
+	}
+	return $html;	
+}
+
+$etapa = (isset($_GET["etapa"])) ? $_GET["etapa"] : '0';
+$_SESSION["etapa"] = carregarEtapa($etapa);
 ?>
