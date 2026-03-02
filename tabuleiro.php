@@ -97,7 +97,7 @@
         	
         	$("#info_peca_selecionada").text(peca_selecionada.toString());
         });
-
+		//Teste branch depois excluir o texto!
 });
 	
 </script>
