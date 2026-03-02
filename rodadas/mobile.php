@@ -40,7 +40,7 @@
               $('#jogar-dados').fadeOut('slow');
               $('#dados-numero').fadeIn('slow');
               <?php echo $second; ?>
-              cronometroStart('85');
+              cronometroStart(null,'85');
             }, 1500);
 		}); 
 	</script>
