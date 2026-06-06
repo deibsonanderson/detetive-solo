@@ -42,8 +42,8 @@ function montarTelaCartasDistribuidas($jogador, $class = 'col-md-6'){
     return $html;
 }
 
-$tituloForm = 'Selecine seu destino inicial';
-$tituloCartas = 'Jogador anote suas cartas!';
+$tituloForm = 'Seu destino inicial';
+$tituloCartas = $jogador['nome'].' anote suas cartas!';
 
 if ($_SESSION["layout"] == 'mobile') {
     echo exibirTexto($tituloForm);

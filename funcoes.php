@@ -381,7 +381,10 @@ function carregarProximoDestino($cartasBase, $jogador, $inicio = false){
 function montarDestinosIniciaisJogadores($cartasBase, $jogadores){
     $aux = null;
     foreach ($jogadores as $jogador) {
-        $jogador["destinoAtual"] = carregarProximoDestino($cartasBase, $jogador, true);
+        $jogador["destinoAtual"] = $cartasBase[$jogador['local']]; 
+		
+		//bloco de codigo abaixo gera o destino inicial aleatorio
+		//$jogador["destinoAtual"] = carregarProximoDestino($cartasBase, $jogador, true);
         $aux[] = $jogador;
     }
     return $aux;
