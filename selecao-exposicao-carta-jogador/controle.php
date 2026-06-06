@@ -20,7 +20,7 @@ if ($totalLocalizados == null || count($totalLocalizados["encontradas"]) == 0) {
         //Caso o jogador humano so tenho 1 carta não é necessário clicar sendo redirecionado automaticamente para a pagina que exibe uma das cartas do palpite
         $totalEncontradas = count($encontradas);
         if($totalEncontradas == 1){
-            echo '<script>window.location.href = "./index.php?etapa=8&carta=' . $encontradas[0]["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'";</script>';
+            echo '<script>window.location.href = "./index.php?etapa=12&carta=' . $encontradas[0]["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'";</script>';
         }
     }
 }

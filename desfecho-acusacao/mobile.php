@@ -12,7 +12,7 @@ if($jogador["npc"]){
             
             echo '<p style="text-align: center;"><img width="100" src="./assets/imagens/suspeitos/'.$jogador["imagem"].'" class="img-fluid espacamentos border-geral"></p>';
             echo '<h1 style="text-align: center;">Você é único investigador que sobrou, agora é a hora de provar que você é um DETETIVE de verdade!!!</h1>';
-            echo '<h1 style="text-align: center;"><a href="./index.php?etapa=6&acusar=true" onclick="btnVibrate();">Acusar!</a></h1>';
+            echo '<h1 style="text-align: center;"><a href="./index.php?etapa=9&acusar=true" onclick="btnVibrate();">Acusar!</a></h1>';
             
         } else {
             

@@ -4,5 +4,5 @@
     
     $_SESSION["tempo"] = $_GET["tempo"];
     
-    echo '<script>window.location.href = "./index.php?etapa=4'.$voltar.'";</script>';
+    echo '<script>window.location.href = "./index.php?etapa=7'.$voltar.'";</script>';
 ?>

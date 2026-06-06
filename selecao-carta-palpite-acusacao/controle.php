@@ -24,7 +24,7 @@ if($jogador["npc"]){
     $local = ($_GET["acusar"]) ? $filtrados["LOCAL"][0] : $destinoAtual;
     
     if($_GET["acusar"]){
-        $url = "./index.php?etapa=10&suspeito=".$suspeito["codigo"]."&arma=".$arma["codigo"]."&local=".$local["codigo"];
+        $url = "./index.php?etapa=13&suspeito=".$suspeito["codigo"]."&arma=".$arma["codigo"]."&local=".$local["codigo"];
         $html = '<script>window.location.href = "'.$url.'";</script>';
         echo $html;
     }
@@ -45,7 +45,7 @@ if($jogador["npc"]){
     $armas = listarCartaPeloTipo($CARTAS_BASE, 'ARMA');
     $locais = listarCartaPeloTipo($CARTAS_BASE, 'LOCAL');
     
-    $etapa = ($_GET["acusar"])?"10":"9";
+    $etapa = ($_GET["acusar"])?"13":"10";
     
 }
 ?>

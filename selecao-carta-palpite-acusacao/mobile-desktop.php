@@ -29,7 +29,7 @@ function montarTelaFormularioPalpiteAcusacao($etapa, $suspeitos, $armas, $locais
     			<div class="form-group row justify-content-center">
     				<div class="row">
                     '.montarLinkFormulario('Confirmar!', 'col-md-6').'
-                    '.montarLinkVoltar('col-md-6', '5').'
+                    '.montarLinkVoltar('col-md-6', '8').'
     				</div>
         		</div>
     		</form>';

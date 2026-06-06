@@ -2,7 +2,7 @@
 require_once 'cartas.php';
 
 function carregarEtapa($etapa){
-    if ($etapa == "0") {
+    if ($etapa == "1") {
         session_destroy();
         return null;
     } else {
@@ -73,7 +73,7 @@ function montarLinkFormulario($texto, $class = 'col-md-12'){
 
 function montarLinkReset($opcional = '', $newLine = '</br>'){
     return '<div '.$opcional.' class="espacamentos">
-                <a href="./index.php?etapa=0" onclick="btnVibrate();" >
+                <a href="./index.php?etapa=1" onclick="btnVibrate();" >
                     <img width="50" src="./assets/imagens/sair.png" class="img-fluid botao-reset" alt="Sair!">
                 </a>
                 </br>Sair!
@@ -98,30 +98,30 @@ function montarExibicaoConometro($tamahoTexto = '6', $classRelogio = 'digital-cl
 }
 
 function montarLinkAtualizarDestino($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=12', 'Atualizar Destino', $class, true, 'atualizar.png');
+    return montarLink('./index.php?etapa=14', 'Atualizar Destino', $class, true, 'atualizar.png');
 }
 
 function montarLinkChegueiLocal($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=5', 'Cheguei no local!', $class, true, 'destino.png');
+    return montarLink('./index.php?etapa=8', 'Cheguei no local!', $class, true, 'destino.png');
 }
 
 function montarLinkRealizarPalpiteAcusacao($acusar = false, $class = 'col-md-12'){
     $param = ($acusar) ? '&acusar=true' : '';
     $texto = ($acusar) ? 'Acusar!' : 'Realizar um palpite!';
     $imagem = ($acusar) ? 'acusar.png' : 'investigacao.png';
-    return montarLink('./index.php?etapa=6'.$param , $texto , $class, true, $imagem);
+    return montarLink('./index.php?etapa=9'.$param , $texto , $class, true, $imagem);
 }
 
 function montarLinkProximaRodada($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=4', 'Proxima Rodada!', $class, true, 'proximo.png');
+    return montarLink('./index.php?etapa=7', 'Proxima Rodada!', $class, true, 'proximo.png');
 }
 
-function montarLinkVoltar($class = 'col-md-12', $etapa = '4'){
+function montarLinkVoltar($class = 'col-md-12', $etapa = '7'){
     return montarLink('./index.php?etapa='.$etapa.'&voltar=true', 'Voltar!', $class, true, 'voltar.png');
 }
 
 function montarLinkExporCarta($class = 'col-md-12'){
-    return montarLink('./index.php?etapa=7', 'Expor as Cartas!', $class, true, 'expor.png');
+    return montarLink('./index.php?etapa=11', 'Expor as Cartas!', $class, true, 'expor.png');
 }
 
 function exibirTexto($texto, $tipo = '1',  $opcional = ''){
@@ -621,6 +621,6 @@ function montarManual(){
 	return $html;	
 }
 
-$etapa = (isset($_GET["etapa"])) ? $_GET["etapa"] : '0';
+$etapa = (isset($_GET["etapa"])) ? $_GET["etapa"] : '1';
 $_SESSION["etapa"] = carregarEtapa($etapa);
 ?>

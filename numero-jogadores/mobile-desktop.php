@@ -4,7 +4,7 @@ function montarTelaTotalJogadores($html, $classDiv = 'col-md-6', $width = '400',
     for ($i = 2; $i < 7; $i ++) {
         $texto = '<span></br>'.$i.' Jogadores</span>';
         $html .= '<div class="row ' . $classDiv . ' justify-content-center">';
-        $html .= '<a href="./index.php?etapa=1&numero=' . $i . '" style="text-decoration: none;color:black;"><img width="400" src="./assets/imagens/numero-jogadores/' . $i . '.png" class="img-fluid ' . $classImg . '" onclick="btnVibrate();">'.$texto.'</a>';
+        $html .= '<a href="./index.php?etapa=3&numero=' . $i . '" style="text-decoration: none;color:black;"><img width="400" src="./assets/imagens/numero-jogadores/' . $i . '.png" class="img-fluid ' . $classImg . '" onclick="btnVibrate();">'.$texto.'</a>';
         $html .= '</div>';
     }
     return $html;

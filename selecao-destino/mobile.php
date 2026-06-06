@@ -2,7 +2,7 @@
 </br>
 <div class="row">
 	<form action="./index.php" id="myForm" method="get" class="col-md-6 tabela" >
-		<input type="hidden" name="etapa" value="11">
+		<input type="hidden" name="etapa" value="6">
 		<input type="hidden" name="voltar" value="true">
 		<div class="form-group row align-items-center">
 			<label for="local" style="font-size: xx-large;" class="col-md-2">

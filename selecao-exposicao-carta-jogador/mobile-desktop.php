@@ -10,7 +10,7 @@ function montarTelaSelecaoExposicaoCarta($acao, $jogadorEncontrado, $encontradas
         $html =  '<p>'.exibirTexto('Jogador Humano, ' . $jogadorEncontrado["nome"] . ' selecione uma das cartas').'</p>';
         $html .= '<div class="col-md-12 espacamentos">';
         foreach ($encontradas as $encontrada) {
-            $html .= '<a href="./index.php?etapa=8&carta=' . $encontrada["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'">
+            $html .= '<a href="./index.php?etapa=12&carta=' . $encontrada["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'">
                          <img width="'.$width.'" src="./assets/imagens/' . recuperarCaminhoImagem($encontrada["tipo"], $encontrada["imagem"]) . '" class="img-fluid border-geral espacamentos imagem-com-borda" onclick="btnVibrate();">
                       </a>';
         }
@@ -57,7 +57,7 @@ function montarTelaSelecaoExposicaoCartaDesktop($acao, $jogadorEncontrado, $enco
         $html =  '<p>'.exibirTexto('Jogador Humano, ' . $jogadorEncontrado["nome"] . ' selecione uma das cartas').'</p>';
         $html .= '<div class="col-md-12">';
         foreach ($encontradas as $encontrada) {
-            $html .= '<a href="./index.php?etapa=8&carta=' . $encontrada["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'">
+            $html .= '<a href="./index.php?etapa=12&carta=' . $encontrada["codigo"] . '&donoCarta='.$jogadorEncontrado["codigo"].'">
                          <img width="'.$width.'" src="./assets/imagens/' . recuperarCaminhoImagem($encontrada["tipo"], $encontrada["imagem"]) . '" class="img-fluid border-geral imagem-com-borda" onclick="btnVibrate();">
                       </a>';
         }

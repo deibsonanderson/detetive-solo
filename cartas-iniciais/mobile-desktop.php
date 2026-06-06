@@ -1,7 +1,7 @@
 <?php 
 function montarTelaFormularioDestinoInicial($locais, $class = 'col-md-6', $opcional = '') {
     return '<form action="./index.php" method="get" id="myForm" class="'.$class.' tabela" '.$opcional.' >
-    			<input type="hidden" name="etapa" value="11">
+    			<input type="hidden" name="etapa" value="6">
     			<div class="form-group row align-items-center">
     				<label for="local" style="font-size: xx-large;" class="col-md-2">
                         <img width="80" src="./assets/imagens/localizador-de-mapa.png" class="img-fluid">

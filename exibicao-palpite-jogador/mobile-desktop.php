@@ -10,7 +10,7 @@ function montarTelaExporCartasPalpiteAcusacaoHumano($suspeito, $arma, $local, $c
             <div class="row justify-content-center">
                 <div class="row">
                 	'.montarLinkExporCarta('col-md-6 espacamentos').'
-                    '.montarLinkVoltar('col-md-6 espacamentos', '6').'            
+                    '.montarLinkVoltar('col-md-6 espacamentos', '9').'            
                 </div>
             </div>
 ';
