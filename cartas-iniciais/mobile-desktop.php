@@ -42,7 +42,7 @@ function montarTelaCartasDistribuidas($jogador, $class = 'col-md-6'){
     return $html;
 }
 
-$tituloForm = 'Seu destino inicial';
+$tituloForm = 'Selecione seu destino inicial';
 $tituloCartas = $jogador['nome'].' anote suas cartas!';
 
 if ($_SESSION["layout"] == 'mobile') {
